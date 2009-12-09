@@ -1,0 +1,42 @@
+#title ЖИТ заавар
+
+Ерөнхий анх жит суулгасны дараах тохируулга.
+<example>
+git config --global user.name "My NAME"
+git config --global user.email my@email.address
+</example>
+
+Шинээр проект үүсгээд түүнийг сервер лүү илгээх.
+<example>
+mkidr test
+cd test
+git init
+touch README
+git add README
+git commit -m "first commit"
+git remote add origin git@github.com:natsag2000/testproject.git
+git push origin master
+</example>
+
+Хэрэв өөрийн гэсэн дотоод жит байгаа бол түүнийгээ сервер лүү нэмэх.
+<example>
+cd existing_git_repo
+git remote add origin git@github.com:natsag2000/testproject.git
+git push origin master
+</example>
+
+Зарим мэдэхэд илүүдэхгүй зүйлс:
+проект файл татаж авахдаа
+<example>
+git clonet git://github.com/natsag2000/testproject.git
+</example>
+
+хэрэв ssh түлхүүрээр холбогддог бол татаж авахадаа
+<example>
+git clone ssh://github.com/natsag2000/testproject.git
+</example>
+
+ssh түлхүүрээ зөв тохируулсан эсэхээ шалгахдаа
+<exampel>
+ssh git@github.com
+</example>

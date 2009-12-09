@@ -1,0 +1,48 @@
+#title Capslock товчийг контрол товч болгох аргууд
+
+* Линукс машин дээр
+
+.xmodmap файлд юмуу эсвэл /etc/X11/Xmodmap дотор.
+<example>
+clear lock
+add control = Caps_Lock
+</example>
+
+өөр нэг бичих арга нь
+<example>
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+</example>
+
+Шууд идэвхижүүлэхдээ.
+<example>
+xmodmap /etc/X11/Xmodmap
+</example>
+
+Эсвэл холбогдох үед юмуу Х эхлэх үеийн файл дотор дараах оруулалт хийнэ.
+<example>
+xmodmap ~/.xmodmap
+</example>
+
+* БҮНДӨҮС машин дээр
+
+CapsLockIsCtrl.reg гэсэн файл үүсгээд дараах зүйлийг дотор нь бичээд тэрэн дээрээ хоёр дарж регистрт бүртүүлээд болно.
+<example>
+REGEDIT4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
+</example>
+
+Зарим мэдэхэд илүүдэхгүй зүйлс.
+xev програмаар ямар товч ямар кодтойг харж болно. Харсан кодоо доорх тохиргооны keycodeof... хэсэгт бичнэ.
+<example>
+remove Lock = Caps_Lock
+remove Control = Control_L
+keycode <keycodeofcontrol> = Control_L
+keycode <keycodeofcapslock> = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+</example>

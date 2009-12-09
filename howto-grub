@@ -1,0 +1,60 @@
+#title Бүндөүс суулгаад линукс дискнийхээ зүсмэлийг алдсан үед буцааж сэргээх товч заавар
+
+LiveCD нээс эхлүүлнэ.
+
+1. эхлээд тэрминал нээж супер хэрэглэгч болно.
+<example>
+sudo -i
+</example>
+
+2. Диск хэрхэн зүсэгдэж, ямар зүсмэл дээр линукс байгааг олно.
+<example>
+fdisk -l
+</example>
+
+<example>
+Жишээ гаралт:
+   /dev/sda5 linux
+</example>
+
+3. Дараа нь линукс зүсмэлээ таниулах сан үүсгэнэ.
+<example>
+mkdir /media
+mkdir /media/root
+</example>
+
+4. Зүсмэлээ үүсгэсэн сангаар таниулна.
+<example>
+mount /dev/sda5 /media/root
+</example>
+
+5. Зөв зүсмэлээ таниулсан эсэхийг шалгана.
+<example>
+ls /media/root
+  жишээ: /usr /root  ...
+</example>
+
+6. Таниулсан сан дотроо grub файл байгаа санд орно.
+<example>
+cd /media/root/usr/sbin
+</example>
+
+7. Grub ийг ажиллуулна.
+<example>
+./grub
+</example>
+
+8. Grub ажилласан газартаа дискнийхээ зүсмэлийг зааж өгнө. Жишээн дээр sda5 гэдэг нь grub дээр hd0,4 гэж өгөгдөнө. (0 ээс эхэлж тоолдог учраас)
+<example>
+grub>root (hd0,4)
+grub>setup (hd0)
+grub>quit
+</example>
+
+9. Төгсгөлд нь шинээр ачаална.
+<example>
+reboot
+</example>
+
+10. Будаа идсэн холбоос
+[[https://help.ubuntu.com/community/RecoveringUbuntuAfterInstallingWindows][Эндээс ихэнхийг нь харав]]

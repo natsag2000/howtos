@@ -8,7 +8,7 @@ clear lock
 add control = Caps_Lock
 </example>
 
-өөр нэг бичих арга нь
+эсвэл өөр нэг бичих арга нь
 <example>
 remove Lock = Caps_Lock
 remove Control = Control_L
@@ -17,12 +17,12 @@ add Lock = Caps_Lock
 add Control = Control_L
 </example>
 
-Шууд идэвхижүүлэхдээ.
+Шууд идэвхижүүлэхдээ, жишээ нь өмнөх бичиглэлийн аль нэгийг нь /etc/X11/Xmodmap файлд бичсэн бол:
 <example>
 xmodmap /etc/X11/Xmodmap
 </example>
 
-Эсвэл холбогдох үед юмуу Х эхлэх үеийн файл дотор дараах оруулалт хийнэ.
+Эсвэл холбогдох үед юмуу Х эхлэх үеийн файл дотор дараах оруулалт хийнэ. ( жишээ нь .bashrc дотор )
 <example>
 xmodmap ~/.xmodmap
 </example>

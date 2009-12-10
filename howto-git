@@ -40,3 +40,13 @@ ssh түлхүүрээ зөв тохируулсан эсэхээ шалгахд
 <exampel>
 ssh git@github.com
 </example>
+
+ssh түлхүүр хэрэглэсэн бол тохиргооны файл бэлдэнэ.
+.ssh/config
+<example>
+Host github.com
+	User git
+	Hostname github.com
+	PreferredAuthentications publickey
+	IdentityFile /path/to/rsa-private/or/public
+</example>

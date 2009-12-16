@@ -1,0 +1,60 @@
+#title ЛАТЕКС хэрэглэх заавар
+
+* Ubuntu Суулгах
+sudo aptitude install texlive-full  -> 445 MB
+sudo aptitude install texlive-base ( for minimal )
+
+* Mac OS Суулгах
+MacTex i-installer
+
+* LATEX пакет суулгах
+http://www.ctan.org хуудаснаас татаж авсан пакетыг /usr/share/texmf/tex/latex дотор хуулаад
+<example>
+sudo texhash
+эсвэл
+sudo mktexlsr
+</example>
+тушаалыг гүйцэтгэнэ.
+
+хэрэглэгч зөвхөн өөрийнхөө санд суулгана гэвэл ~/texmf/tex/latex сан дотор татаж авсан пакетаа (жишээ нь mypackage.sty) хуулна.
+
+* LATEX unicode
+Юникодоор бичих боломжтой болгохын тулд latex-ucs пакетыг нэмж суулгах шаардлагатай.
+<example>
+\documentclass[12pt,paper=a4,ngerman]{scrartcl}
+
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+</example>
+
+* Хөрвүүлэх
+<example>
+latex Test.tex  -> DVI файл үүсгэнэ.
+эсвэл
+pdflatex Test.tex -> PDF файл үүсгэнэ.
+</example>
+
+* DVI PDF файл үзэх
+xdvi програмаар dvi файлуудыг харж болно.
+xpdf програмаар pdf файлуудыг харж болно.
+
+* Үзүүлбэр бэлдзх
+latex-beamer пакетаар үзүүлбэр бэлдэж болдог.
+<example>
+\documentclass[utf8]{beamer} % utf8 dient für die Umlaute
+<Präambel>
+
+\begin{document}
+ \begin{frame}
+ \frametitle{Überschrift der Folie}
+
+ <Folieninhalt>
+
+ \end{frame}
+ <usw.>
+\end{document}
+</example>

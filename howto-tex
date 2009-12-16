@@ -21,11 +21,11 @@ sudo mktexlsr
 * LATEX unicode
 Юникодоор бичих боломжтой болгохын тулд latex-ucs пакетыг нэмж суулгах шаардлагатай.
 <example>
-\documentclass[12pt,paper=a4,ngerman]{scrartcl}
+\documentclass[12pt,paper=a4]{scrartcl}
 
-\usepackage{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
 
 \begin{document}
 
@@ -58,6 +58,18 @@ latex-beamer пакетаар үзүүлбэр бэлдэж болдог.
  <usw.>
 \end{document}
 </example>
+
+* Бичиг баримтын бүтэц
+
+Book: \part{}, \chapter{}, \section{}, \subsection{}, \subsubsection{}, \paragraph{}, \subparagraph{}.
+
+Report: \part{}, \chapter{}, \section{}, \subsection{}, \subsubsection{}, \paragraph{}, \subparagraph{}.
+
+Article: \part{}, \section{}, \subsection{}, \subsubsection{}, \paragraph{}, \subparagraph{}.
+
+* Latex аас вэб рүү хувиргах
+latex2html
+ubuntu дээр sudo aptitude install latex2html
 
 * Холбооснууд links
 http://wiki.ubuntuusers.de/LaTeX

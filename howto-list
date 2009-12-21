@@ -8,4 +8,5 @@ howto-xterm          -> xterm ийн зарим тохиргоонууд
 howto-tex            -> latex суулгах заавар
 howto-openssl        -> нууц хувиргах задлах
 howto-split          -> файл хэсэгчлэх нийлүүлэх
+howto-dpkg           -> Үбүнтү болон Дэбиан дээрх dpkg хэрэглээ
 howto-install-erlang -> эрланг суулгах заавр

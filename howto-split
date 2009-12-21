@@ -1,0 +1,16 @@
+#title Том файлыг хуваах
+
+* Жижиглэн хуваах
+
+<example>
+Анхдагч тохиргоогоороо хуваагдсан файлууд ардаа цагаан толгойн үсэг авч хуваагддаг. ( -b 3m гэдэг нь гурван мега болгож хуваа гэсэн үг )
+split -b 3m BIG_FILE  small_file_name
+
+Хэрэв ардаа тоотой хуваая гэвэл:
+split -d -b 3m BIG_FILE  small_file_name
+</exampe>
+
+* Буцааж нийлүүлэх
+<example>
+cat small_file_name* > BIG_FILE
+</example>

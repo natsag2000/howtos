@@ -1,0 +1,34 @@
+#title Нууц хувиргалт болон задаргаа
+
+* Нууцалж хөрвүүлэх
+
+<example>
+openssl enc -a -salt -bf -in testfile -out testfile-enc
+</example>
+
+* Задлах
+<example>
+openssl enc -d -a -salt -bf -in testfile -out testfile-enc
+</example>
+
+* Нууц хувиргалт хийх ( түлхүүрээр )
+
+<example>
+openssl rsautl -enc -inkey /path/to/private.key < test.txt > test-enc.txt
+</example>
+
+* Задлах ( хувийн түлхүүрээр )
+
+<example>
+openssl rsautl -decrypt -inkey /path/to/private.key < test-enc.txt > test-zadarsan.txt
+</example>
+
+* Хоёртын файлыг ( бинар ) үсгэн хэлбэрт хувиргах
+<example>
+base64 BINARY_FILE > ASCII_FILE
+</example>
+
+* Үсгэн файлаа буцааж хоёртын болгох
+<example>
+base64 -d ASCII_FILE > BINARY_FILE
+</example>

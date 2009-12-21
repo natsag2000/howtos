@@ -1,0 +1,46 @@
+#title Эрланг суулгах заавар
+
+* Татаж авах
+http://www.erlang.org/download.html хаягаас хамгийн сүүлийн хувилбараас source гэсэн баганад буй эх кодыг нь татаж авна.
+
+* Задлах
+tar xvfz otp_src_R1XXX.tar.gz
+
+* Тохируулах
+
+cd otp_src_R1XXX
+<example>
+Стандарт сан дотор суулгахаар бол ( /usr/local/{bin,lib/erlang,man/man1} гэсэн сангуудад файлууд хуулагдана )
+./configure
+
+хэрэв өөрийн тусгай санд суулгахаар бол ( жишээ нь /opt/myerlang сан дотор суулгая гэвэл )
+./configure --prefix=/opt/myerlang
+
+хэрэв олон процесортой бол
+./configure --enable-smp-support
+</example>
+
+* Хөрвүүлэх болон суулгах
+<example>
+make
+хөрвөж дууссаны дараа суулгахдаа
+make install   ( хэрэв стандарт санд дотор суулгах гэж байгаа бол рүүт эрхээр гүйцэтгэх хэрэгтэй байж магадгүй )
+</example>
+
+* Бичиг баримтуудыг нь суулгах
+Татаж авах хаягнаас html, man pages гэсэн хоёр баганаас тус бүрд нь татаж авна. ( otp_doc_html_XXXX.tar.gz otp_doc_man_XXXX.tar.gz )
+
+* Задлах
+
+хэрэв стандарт сан дотор суулгасан бол: ( рүүт эрх шаардлагатай )
+<example>
+tar xvfz opt_doc_html_XXXX.tar.gz -C /usr/local/lib/erlang/
+
+Хэрэв өөрийн гэсэн санд суулгасан бол: ( дээрх жишээний санг авч үзье )
+tar xvfz opt_doc_html_XXXX.tar.gz -C /opt/myerlang/lib/erlang
+</example>
+
+* Суулгаснаа шалгах
+<example>
+erl --version
+</example>

@@ -10,11 +10,11 @@ sudo apt-file list PACKAGE_NAME
 
 * Нэг машинаас суусан пакетны жагсаалтыг аваад нөгөө машинд суулгах
 эхний машин дээр:
-dpkg -get-selection | grep -v deinstall > dpkg-get.txt
+dpkg --get-selections | grep -v deinstall > dpkg-get.txt
 
 хоёр дахь машин дээр:
-dpkg -clear-selections
-cat dpkg-get.txt | dpkg -set-selections
+dpkg --clear-selections
+cat dpkg-get.txt | dpkg --set-selections
 apt-get dselect-upgrade
 ( Эхний машинаас /etc/sources.list файлыг хоёр дахь машин уруу хуулах шаардлага гарч магадгүй )
 

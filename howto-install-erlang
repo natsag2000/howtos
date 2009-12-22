@@ -45,3 +45,22 @@ tar xvfz opt_doc_html_XXXX.tar.gz -C /opt/myerlang/lib/erlang
 <example>
 erl --version
 </example>
+
+* Бичиг баримт суусныг шалгах
+<example>
+erl -man os
+</example>
+
+* Бичиг баримтын man хуудаснуудыг системийн man дотор оруулах
+.tcshrc файл дотроо:
+<example>
+set MANPATH=`manpath`
+set MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
+</example>
+
+.bashrc хэрэглэдэг бол:
+<example>
+MANPATH=`manpath`
+MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
+export MANPATH
+</example>

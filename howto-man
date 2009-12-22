@@ -1,0 +1,12 @@
+#title man тушаал тохируулах болон хэрэглэх
+
+manpath тушаалаар ямар ямар санд хайх нь харуулагдана.
+
+Ерөнхий тохиргоо /etc/manpath.conf дотор хийгддэг.
+
+* Өөрийн гэсэн сан нэмэх
+.tcshrc файл дотор:
+<example>
+set MANPATH=`manpath`
+set MANPATH="${MANPATH}:/path/to/new/folder/man"
+<example>

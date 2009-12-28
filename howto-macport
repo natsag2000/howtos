@@ -1,0 +1,61 @@
+#title Mac дээрх порт хэрэглээ
+
+* Порт шинэчлэлт
+sudo port -d selfupdate
+
+* Порт хайлт
+port search PORT_NAME
+
+* Байгаа бүх портыг харуулах
+port list
+
+* Портын тухай мэдээлэл авах
+port info PORT_NAME
+
+* Порт суулгахад шаардагдах програмуудыг харуулах
+port deps PORT_NAME
+
+* Портыг ямар нэмэлт сонголттой суулгаж болохыг харуулах
+port variants PORT_NAME
+port install PORT_NAME +variant --нэмэлт сонголттой суулгах
+port install PORT_NAME -variant --суулгацаас сонголт хасах
+
+* Хөрвүүлж суулгах үед үүсгэсэн файлуудыг цэвэрлэж устгах
+port clean --all PORT_NAME
+
+* Суулгасан портыг устгах
+port uninstall PORT_NAME
+
+* Суугдсан портын файлуудыг харуулах
+port contents PORT_NAME
+
+* Суугдсан портуудыг харуулах
+port installled
+
+* Хуучирсан портудыг харуулах
+port outdated
+
+* Порт шинэчлэх
+port upgrade PORT_NAME
+port upgrade -n PORT_NAME  -- хамааралтай програмуудыг нь шинэчлэхгүй
+
+* Бүх хуучирсан портуудыг шинэчлэх
+port upgrade outdated
+port -u upgrade PORT_NAME  -- ( энэ сонголтгүй бол хуучин хувилбарыг нь устгалгүйгээр зөвхөн идэвхижүүлэхгүй орхичихдог. Энэ сонголттой бол устгана. )
+
+* Тухайн портноос хамааралтай портуудыг харуулах
+port dependents PORT_NAME
+
+* Портын хөгжүүлэгчийнх нь хувилбар нь шинэчлэгдсэн эсэхийг шалгах
+port livecheck PORT_NAME
+
+* Портноос хоёртын нөөц суулгац файл бэлдэх
+${prefix}/var/macports/package дотор багц файл үүсдэг. macports.conf файл дотор ямар өргөтгөлтэй үүсэхийг нь зааж өгдөг. Анхдагч өргөтгөл нь tgz.
+port -d archive PORT_NAME
+
+* Портноос бие даасан хоёртын суулгац файл бэлдэх ( *.pkg  эсвэл *.dmg )
+port pkg PORT_NAME
+port dmg PORT_NAME
+
+
+

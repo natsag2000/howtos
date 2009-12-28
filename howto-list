@@ -10,4 +10,6 @@ Howto list:
 8. howto-split           -> файл хэсэгчлэх, нийлүүлэх
 9. howto-dpkg            -> Үбүнтү болон Дэбиан дээрх dpkg хэрэглээ
 10. howto-man            -> man тушаалын хэрэглээ
-11. howto-install-erlang -> эрланг суулгах заавр
+11. howto-macport        -> МАК машин дээрх порт зохицуулалт
+12. howto-install-erlang -> эрланг суулгах заавр
+

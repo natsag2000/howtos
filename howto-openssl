@@ -8,7 +8,7 @@ openssl enc -a -salt -bf -in testfile -out testfile-enc
 
 * Задлах
 <example>
-openssl enc -d -a -salt -bf -in testfile -out testfile-enc
+openssl enc -d -a -salt -bf -in testfile-enc -out mytestfile
 </example>
 
 * Нууц хувиргалт хийх ( түлхүүрээр )

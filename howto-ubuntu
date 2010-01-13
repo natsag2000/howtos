@@ -26,3 +26,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 957E3467
 sudo apt-key add sun_vbox.asc
 
 Төгсгөлд нь sudo aptitude update тушаалаар пакет баазаа сэргээдэг.
+
+
+links
+http://ubuntuguide.org/wiki/Ubuntu:Karmic

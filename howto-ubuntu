@@ -28,5 +28,18 @@ sudo apt-key add sun_vbox.asc
 Төгсгөлд нь sudo aptitude update тушаалаар пакет баазаа сэргээдэг.
 
 
+* startup, daemon control
+жишээ нь gdm буюу гномын эхлээд бүртгэдэг цонхыг хорих/зогсоох
+
+(gdm2 дээр ажиллахгүй байж магадгүй гэдгийг анхаар )
+services-admin &   # график цонх үүсэх бөгөөд тэндээс чагтыг нь авна.
+rcconf  # консол дээр
+sysv-rc-conf  # бас консол дээр. ажиллах аль level дээр ажиллахыг нь зааж өгдөг.
+sudo update-rc.d -f gdm remove # хуучны арга буцаагаад сэргээе гэвэл:
+sudo update-rc.d -f gdm defaults
+sudo service gdm stop
+
+
+
 links
 http://ubuntuguide.org/wiki/Ubuntu:Karmic

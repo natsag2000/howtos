@@ -1,0 +1,28 @@
+#title Debian Ubuntu тушаалууд
+
+gdm2 ---
+эхлэх үеийн дууг хорих
+sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false
+
+эхлэх үеийн цонхон дээрх тохиргоо
+sudo -u gdm dbus-launch gconf-editor
+
+PPA нэмэх ( ppa:<repository-name>/<subdirectory> )
+sudo add-apt-repository ppa:justinbogner/ppa
+эсвэл /etc/apt/sources.list дээр нэмнэ
+
+
+PPA хасах 
+( launchpad.net хаягнаас ppa-purge.deb файл суулгана )
+https://launchpad.net/~xorg-edgers/+archive/ppa/+files/ppa-purge_0.2.6~karmic_all.deb )
+
+sudo ppa-purge ppa:justinbogner/ppa
+
+PPA key нэмэх
+launchpad.net дээр татаж авах РРА ийн хуудсан дээр Signing key гэсэн түлхүүр үгийг нь хуулж авна.
+Түлхүүр нь жишээ нь 1024R/957E3467 гэсэн хэлбэртэй байдаг бөгөөд дараах тушаалд / ийн дараах тоог оруулна.
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 957E3467
+Эсвэл зарим пакетын түлхүүр нь текст файл хэлбэрээр татаж авагдах боломжтой байдаг (e.g sun_vbox.asc). тийм тохиолдолд нэмэхдээ:
+sudo apt-key add sun_vbox.asc
+
+Төгсгөлд нь sudo aptitude update тушаалаар пакет баазаа сэргээдэг.

@@ -1,0 +1,72 @@
+#title xrandr хэрэглээ
+
+xrandr --help
+man xrandr
+man intel # интел төрлийн дэлгэцийн драйверууд
+man radeon # АТИ төрлийн дэлгэцийн драйверууд
+
+Debian ubuntu машинууд дээр xorg.conf тохиргоогоо ЦЭВЭРЛЭСЭН (хуучин дэлгэцийн сонголтуудыг хорих, эсвэл шинээр үүсгэх) байх ёстой
+sudo dpkg-reconfigure -phigh xserver-xorg # хуучин машинууд дээр
+sudo X -configure                         # 9.04 өөс дээшхи машинууд дээр
+
+Screen гэсэн хэсэгт Virtual хэмжээг зааж өгнө:
+
+Section "Screen"
+...
+        SubSection "Display"
+                   Virtual 2560 1039 # 19" (1280x1024) ийн хоёр дэлгэцийн нийт урт нь (1280+1280=2560)
+        EndSubSection
+EndSection
+
+ghc суусан бол:
+ghc -e Graphics.X11.Xinerama.compiledWithXinerama тушаал өгөхөөр true буцаж ирэхийг шалгах
+ghc -e "Graphics.X11.openDisplay [] >>= Graphics.X11.Xinerama.getScreenInfo"  тушаал өгөхөөр дэлгэцийн хэмжээнүүд харуулахыг шалгах
+
+xrandr -q  өгөхөөр хэдэн дэлгэц ямар зуралттайг харуулна
+
+Өмнөх тушаалаар DVI-0 DVI-1 гэсэн хоёр дэлгэц танигдсан бол:
+xrandr --output DVI-1 --left-of DVI-0'
+
+Холбогдох үед автоматаар хэрэгжүүлэхээр бол /etc/X11/Xsession.d/45custom_xrandr-settings файл дотор бичиж үлдээнэ:
+<example>
+
+# If an external monitor is connected, place it with xrandr
+ 
+# External output may be "VGA" or "VGA-0" or "DVI-0" or "TMDS-1"
+EXTERNAL_OUTPUT="DVI-1"
+INTERNAL_OUTPUT="DVI-0"
+# EXTERNAL_LOCATION may be one of: left, right, above, or below
+EXTERNAL_LOCATION="left"
+ 
+case "$EXTERNAL_LOCATION" in
+       left|LEFT)
+               EXTERNAL_LOCATION="--left-of $INTERNAL_OUTPUT"
+               ;;
+       right|RIGHT)
+               EXTERNAL_LOCATION="--right-of $INTERNAL_OUTPUT"
+               ;;
+       top|TOP|above|ABOVE)
+               EXTERNAL_LOCATION="--above $INTERNAL_OUTPUT"
+               ;;
+       bottom|BOTTOM|below|BELOW)
+               EXTERNAL_LOCATION="--below $INTERNAL_OUTPUT"
+               ;;
+       *)
+               EXTERNAL_LOCATION="--left-of $INTERNAL_OUTPUT"
+               ;;
+esac
+
+xrandr |grep $EXTERNAL_OUTPUT | grep " connected "
+if [ $? -eq 0 ]; then
+    xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto $EXTERNAL_LOCATION
+    # Alternative command in case of trouble:
+    # (sleep 2; xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto $EXTERNAL_LOCATION) &
+else
+    xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --off
+fi
+
+</example>
+links
+http://www.thinkwiki.org/wiki/Xorg_RandR_1.2
+http://khushildep.blogspot.com/2009/11/xmonad-karmic-dual-head.html
+

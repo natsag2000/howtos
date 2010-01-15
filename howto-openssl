@@ -14,13 +14,13 @@ openssl enc -d -a -salt -bf -in testfile-enc -out mytestfile
 * Нууц хувиргалт хийх ( түлхүүрээр )
 
 <example>
-openssl rsautl -enc -inkey /path/to/private.key < test.txt > test-enc.txt
+openssl rsautl -enc -inkey /path/to/my_private.key < test.txt > test-enc.txt
 </example>
 
 * Задлах ( хувийн түлхүүрээр )
 
 <example>
-openssl rsautl -decrypt -inkey /path/to/private.key < test-enc.txt > test-zadarsan.txt
+openssl rsautl -decrypt -inkey /path/to/my_private.key < test-enc.txt > test-zadarsan.txt
 </example>
 
 * Хоёртын файлыг ( бинар ) үсгэн хэлбэрт хувиргах
@@ -28,7 +28,22 @@ openssl rsautl -decrypt -inkey /path/to/private.key < test-enc.txt > test-zadars
 base64 BINARY_FILE > ASCII_FILE
 </example>
 
-* Үсгэн файлаа буцааж хоёртын болгох
+* АSCII файлаа буцааж хоёртын болгох
 <example>
 base64 -d ASCII_FILE > BINARY_FILE
 </example>
+
+* RSA Гэрчилгээ үүсгэх
+> openssl genrsa -out private.pem 2048
+
+* Олон нийтэд зориулсан public түлхүүрээ салгаж авах
+> openssl rsa -in private.pem -out public.pem -outform PEM -pubout    # PEM хэлбэр нь аски текст хэлбэртэй байдаг.
+
+* Өөр хүний нийтийн түлхүүрээр түлхүүрдэх
+> openssl rsautl -encrypt -inkey others_public.pem -pubin -in input_file.txt -out output_file_enc
+
+* Задлах
+> openssl rsautl -decrypt -inkey private.pem -in input_file_enc -out output_file.txt
+
+* Хувийн түлхүүрэндээ нууц үг өгөх
+openssl rsa -in private.pem -des3 -out private_new.pem

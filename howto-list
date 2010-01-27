@@ -12,4 +12,7 @@ Howto list:
 10. howto-man            -> man тушаалын хэрэглээ
 11. howto-macport        -> МАК машин дээрх порт зохицуулалт
 12. howto-install-erlang -> эрланг суулгах заавр
-
+13. howto-xrandr         -> xrandr ийн хэрэглээ. Хоёр дэлгэц рүү цацах
+14. howto-ubuntu         -> ubuntu хэрэглээ
+15. howto-make           -> Makefile ийн ашиглалт
+16. howto-dotfiles       -> онцгой цэгтэй файлууд

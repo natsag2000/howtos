@@ -39,6 +39,38 @@ sudo update-rc.d -f gdm remove # хуучны арга буцаагаад сэр
 sudo update-rc.d -f gdm defaults
 sudo service gdm stop
 
+* soundcard alsa
+* alsa болгож тохируулах
+
+sudo aptitude install asoundconf-gtk alsa-oss libasound2 libasound2-plugins padevchooser gstreamer0.10-pulseaudio ubuntu-restricted-extras
+sudo aptitude remove libpulsecore9 pulseaudio pulseaudio-esound-compat pulseaudio-module-hal pulseaudio-module-x11
+sudo aptitude dist-upgrade
+
+### Энэ заавал ажиллуулдаг.
+/etc/modprobe.d/alsa-base.conf дотор дараах мөрийг нэмнэ.
+options snd-hda-intel model=3stack enable=1 index=0
+
+sudo reboot
+
+хэрэглэгчийг audio бүлэгт нэмэх:
+sudo adduser <username> audio
+
+### Энэ бас чухал
+найдварын хувьд сайн биш ч гэсэн ажиллуулах боломжтой нэг арга:
+chmod -R a+rwX /dev/snd/*
+
+Дууны тохируулгыг өөрчлөх:
+>su
+# alsamixer
+# alsactl store
+
+aplay -l танисан картуудыг харуулна.
+cat /proc/asound/cards бас картуудыг харуулна.
+
+
+pulseaudio хэрэглэж байгаа бол xmonad дээр pulseaudio -D гэж эхлүүлээд болно.
+
+
 
 
 links

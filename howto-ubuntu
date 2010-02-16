@@ -70,6 +70,8 @@ cat /proc/asound/cards бас картуудыг харуулна.
 
 pulseaudio хэрэглэж байгаа бол xmonad дээр pulseaudio -D гэж эхлүүлээд болно.
 
+* fonts
+sudo aptitude install xfonts-base  # үндсэн үсгийн маягууд ( юникод үсгийн маяг бас агуулсан байгаа)
 
 
 

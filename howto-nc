@@ -1,0 +1,81 @@
+#title Сүлжээний швецарь хутга nc (netcat)
+
+* портын нээлттэй эсэхийг шалгах
+nc -v -w 1 localhost -z 1-2000
+
+* файл дамжуулалт
+хүлээж авах машин дээр:
+nc -lp 1234 > datei.tar
+
+илгээх машин дээр:
+nc -w 1 IP_ADDRESS 1234 < datei.tar
+
+* чалчих
+нэг цонхон дээр хүлээж авах портоо нээнэ:
+nc -lp 1234
+нэг цонхон дээр илгээх тушаалаа өгнө:
+nc IP_ADDR 1234
+ингээд бичсэн текстээ энтер хоёр удаа дарж илгээнэ.
+
+*telnet сервер болгож хэрэглэх
+nc -lp 1234 -e /bin/bash   # бүндөүс дээр -e cmd.exe
+гээд холболт хийж тушаалаа өгч ашиглаж болно.
+
+* HTTP HEADER шалгах
+nc google.com 80
+
+GET / HTTP/1.1
+Host google.com
+User-Agent: netcat
+Referrer: google.com
+
+гээд хоёр удаа энтер дарахад серверээс ирсэн текстийг харуулна.
+
+* Вэб сервер
+while true; do nc -l -p 80 -q 1 < error.html; done
+
+* Систем хуулбарлах (хоёр машин дээр хоёуланд нь LIVE CD хэрэглэнэ )
+хуулах системийнхээ дискийг:
+dd if=/dev/sda | nc 192.168.0.100 1234
+хүлээж авах машин дээрээ:
+nc -l -p 1234 | dd of=/dev/sda
+
+хуулбарласан машиныхаа host, IP, /etc/lftab зэргийг засаад шинээр ачаална.
+
+* өөр файл дамжуулах арга
+зөвхөн нэг машинаас тушаал өгч нөгөө машин уруу хуулах:
+tar cz /etc | ssh user@host -c `cd /bak; cat > etc.tgz`
+өмнөх тушаалыг шахсан биш задалснаар нь хуулна гэвэл:
+tar cz /etc | ssh user@host -c `cd /bak; cat tar xz`
+өөр машинаас хуулах:
+ssh user@host -c `tar cz /etc` > /bak/etc.tgz
+
+
+* fifo ашиглах
+илгээх талд:
+> mkfifo myfifo
+> mpg123 -s *.mp3 > myfifo
+хүлээж авах талд:
+nc -l -p 2345 | rawplay
+дараа нь ахиад илгээх талаасаа:
+cat myfifo | nc REMOTE_HOST 2345
+
+олон машин уруу зэрэг илгээе гэвэл:
+> mkfifo myfifo1 myfifo2 myfifo3
+> mpg123 -s *.mp3 > myfifo1
+хүлээж авах машин дээр:
+nc -l -p 2345 | rawplay
+илгээх машин дээр ахиад
+cat myfifo1 | tee myfifo2 | nc machine1 2345
+хоёр дахь хүлээж авах машин дээр:
+nc -l -p 2345 | rawplay
+илгээх машин дээр
+cat myfifo2 | tee myfifo3 | nc machine2 2345
+.... гэх мэт цааш нь олон машин уруу илгээж болно.
+
+* өөр сонирхох багажнууд
+socat
+cryptcat
+mkfifo
+nettee
+

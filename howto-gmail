@@ -1,0 +1,52 @@
+#title gmail from emacs
+
+.mew.el файлаас үндсэн тохиргоогоо уншдаг
+=========================================
+;; портын дугаар болон серверийн нэр нь өөр машинаас порт туннел хэрэглэхээр
+;; тохируулсан байгааг анзаарна уу! тунел хэрэглээгүй бол шууд серверийн нэр болон
+;; холбогдох портын дугаарыг нь бичих хэрэгтэй.
+
+;; mail accounts
+(setq mew-config-alist
+      ;; GMAIL IMAP
+      '(
+        ("default"
+         ("mailbox-type". imap)
+         ("proto"          . "%")
+         ("name"           . "Nagi")
+         ("user"           . "MAIL_ADDRESS")
+         ("imap-server"    . "localhost")
+         ("imap-delete" . nil)
+         ("imap-size" . 0)
+         ("imap-ssl"       . t)
+         ("imap-user"      . "MAIL_ADDRESS")
+         ("imap-ssl-port"  . "9930")
+         ;; SMTP
+         ("smtp-ssl"       . t)
+         ("smtp-ssl-port"  .  "4650")
+         ("smtp-auth-list" . ("PLAIN" "LOGIN" "CRAM-MD5"))
+         ("smtp-user"      . "MAIL_ADDRESS")
+         ("smtp-server"    . "localhost")
+         ("mail-domain"    . "localhost")
+         ))
+      )
+
+;; general configuration for all account
+(setq mew-smtp-ssl-port "4650")
+;;(setq mew-prog-ssl "/usr/bin/stunnel")
+;;(setq mew-smtp-port "25")
+(setq mew-pop-size 0)
+;;(setq toolbar-mail-reader 'Mew)
+(setq mew-use-cached-passwd t)
+(setq mew-passwd-timer-unit 999)
+(setq mew-passwd-lifetime 999)
+(set-default 'mew-decode-quoted 't)
+(setq mew-pop-delete nil)
+(setq mew-ssl-verify-level 0)  ;; otherwise certficate verification failuer!
+
+.emacs файл доторх дараахыг нэмж өгнө
+=====================================
+(autoload 'mew "mew" nil t)
+(autoload 'mew-send "mew" nil t)
+
+

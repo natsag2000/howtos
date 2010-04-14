@@ -17,3 +17,5 @@ Howto list:
 15. howto-make           -> Makefile ийн ашиглалт
 16. howto-dotfiles       -> онцгой цэгтэй файлууд
 17. howto-nc             -> netcat хэмээгч сүлжээний швецарь хутга
+18. howto-tunnel         -> суваг татах серверийн хэрэглээ
+19. howto-gmail          -> гүүгл захиаг өөр програмаас ашиглах заавар

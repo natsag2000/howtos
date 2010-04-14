@@ -29,3 +29,16 @@
 netstat -npl
 or
 netstat -ap
+
+---
+Хэрэв тодорхой хугацааны дараа сервер салаад байвал
+
+/etc/ssh/sshd_config файл дотор:
+ClientAliveInterval 60
+гэж нэмж өгөх, эсвэл
+
+/etc/ssh/ssh_config дотор:
+ServerAliveInterval 60
+
+гэж оруулж өгнө (ФАЙЛЫН НЭРИЙГ АНХААРНА УУ).
+---

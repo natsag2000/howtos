@@ -1,0 +1,31 @@
+#title гүүглийн чалчих үйлчилгээг bitlbee дээр тохируулах
+
+дараах хэсгийг .эмакс файл уруугаа оруулж өгнө. (bitlbee-г суулгаж эхлүүлсэн байх ёстой)
+
+(defvar bitlbee-password "geheim")
+
+ (add-hook 'erc-join-hook 'bitlbee-identify)
+ (defun bitlbee-identify ()
+   "If we're on the bitlbee server, send the identify command to the
+ &bitlbee channel."
+   (when (and (string= "localhost" erc-session-server)
+              (string= "&bitlbee" (buffer-name)))
+     (erc-message "PRIVMSG" (format "%s identify %s"
+                                    (erc-default-target)
+                                    bitlbee-password))))
+
+
+-----------------
+дараа нь М-х erc  гэж эмаксийн чалчдаг програмыг эхлүүлээд:
+
+/server localhost
+account add jabber USERNAME@GOOGLEMAIL.COM PASSWORD
+
+account list тушаалаар өмнөх үүсгэсэн эрх ямар дугаартай байгааг нь мэдээд дараахь тушаалуудын # тэмдгийн оронд дугаарыг нь оруулна
+account set #/port 5223
+account set #/server talk.googl.com
+account set #/ssl true
+account on #
+
+АНХААР:
+хэрэв та суваг ашиглаж байгаа бол 5223 гэсэн портондоо суваг татсан байх ёстой ба сервер нь localhost байх болно.

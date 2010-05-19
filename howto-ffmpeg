@@ -1,0 +1,47 @@
+#title ffmpeg зэвсгийн хэрэглээ
+
+Анхаар: ffmpeg зэвсэг нь --enable-x11grab гэсэн сонголттой хөрвүүлэгдэх ёстой
+жишээ нь ./configure --extra-ldflags=-L/usr/X11R6/lib --enable-x11grab --enable-gpl
+
+* Дэлгэцийг шахалтгүй хэлбэртэй бичиж авах
+
+ffmpeg -f x11grab -r 25 -s 1392x1040 -i :0.0 -vcodec huffyuv -sameq Lossless-HuffYUV.avi
+
+* Дэлгэцийг mp4 шахалттай бичиж авах
+
+ffmpeg -f x11grab -r 15 -s 1024x768 -i :0.0  -vcodec mpeg4 -b 1000 -g 300  test.avi
+
+** тайлбар:
+  -i :0.0 гэдэг нь x=0 y=0 цэгээс эхлэж бичих. -i :0.0+10,20 гэж эхлэх цэгийг өөрчлөнө
+  -i сонголт нь -s сонголтын урд нь байвал алдаа заана.
+  анхаар: шахалтгүй бичээд шахаж хувиргавал илүү чанартай болдог
+
+* HuffYUV хэлбэрээс Mpeg2 хэлбэр лүү хувиргах
+
+ffmpeg -i Lossless-HuffYUV.avi -f mpeg2video -sameq Mpeg2.mpg
+
+* Mpeg2 хэлбэрээс Microsoft MPEG-4 4.2 хэлбэр лүү хувиргах
+mencoder -forceidx -mc 0 -noskip -skiplimit 0 -ovc lavc -lavcopts
+vcodec=msmpeg4v2:vhq -o Windoze-MPEG4.avi Mpeg2.mpg
+
+* HuffYUV AVI хэлбэрээс mpeg4 video хэлбэр лүү хувиргах
+ffmpeg -i Lossless-HuffYUV.avi -sameq mpeg4.avi
+
+* HuffYUV AVI хэлбэрээс XviD хэлбэр лүү хувиргах
+
+ffmpeg -i Lossless-HuffYUV.avi -vcodec libxvid -aspect 1.3333 -sameq XviD.avi
+
+* HuffYUV AVI хэлбэрээс mp4 (libx264) video хэлбэр лүү хувиргах
+
+ffmpeg -i Lossless-HuffYUV.avi -vcodec libx264 -sameq libx264.mp4
+
+* дүрс бичлэгийг зураг болгож хувиргах
+ffmpeg -i foo.avi -r 1 -s WxH -f image2 foo-%03d.jpeg
+  WxH гэж зааж өгсөн хэлбэрт хувиргана
+
+* Дэлгэц дээрх цонхнуудын хэмжээ байршлын мэдээллийг авах
+
+xwininfo -frame   гээд цонхон дээр дарахаар уг цонхны мэдээллийг харуулна
+
+* нэмэлт жишээг man ffmpeg зааврын төгсгөлд харна уу
+

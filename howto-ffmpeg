@@ -1,14 +1,16 @@
-#title ffmpeg зэвсгийн хэрэглээ
+-*- mode: org; -*-
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+*ffmpeg зэвсгийн хэрэглээ
 
 Анхаар: ffmpeg зэвсэг нь --enable-x11grab гэсэн сонголттой хөрвүүлэгдэх ёстой
 жишээ нь ./configure --extra-ldflags=-L/usr/X11R6/lib --enable-x11grab --enable-gpl
 
 * Дэлгэцийг шахалтгүй хэлбэртэй бичиж авах
-
 ffmpeg -f x11grab -r 25 -s 1392x1040 -i :0.0 -vcodec huffyuv -sameq Lossless-HuffYUV.avi
 
 * Дэлгэцийг mp4 шахалттай бичиж авах
-
 ffmpeg -f x11grab -r 15 -s 1024x768 -i :0.0  -vcodec mpeg4 -b 1000 -g 300  test.avi
 
 ** тайлбар:
@@ -34,6 +36,23 @@ ffmpeg -i Lossless-HuffYUV.avi -vcodec libxvid -aspect 1.3333 -sameq XviD.avi
 * HuffYUV AVI хэлбэрээс mp4 (libx264) video хэлбэр лүү хувиргах
 
 ffmpeg -i Lossless-HuffYUV.avi -vcodec libx264 -sameq libx264.mp4
+
+* Quicktime mov хэлбэрээр бичиж авах
+ffmpeg -r 5 -g 120 -s 640x480 -f x11grab -i :0.0 -vcodec qtrle
+screencast.mov
+
+* Дуутай бичиж авах
+** mp3 дуутай
+ffmpeg -r 5 -g 120 -s 1280x800 -f x11grab -i :0.0 -acodec libmp3lame
+-vcodec libx264 -cqp 1 -intra -coder ac screencast.avi
+
+** faac дуутай
+ffmpeg -r 5 -g 120 -s 1280x800 -f x11grab -i :0.0 -f oss -i /dev/dsp0.0
+-acodec libfaac -vcodec libx264 -cqp 1 screencast.avi
+
+** mp3 дуутай, oss драйвертай
+ffmpeg -r 5 -g 120 -s 1280x800 -f x11grab -i :0.0 -f oss -i /dev/dsp0.0
+-acodec libmp3lame -vcodec libx264 -cqp 1 screencast.avi
 
 * дүрс бичлэгийг зураг болгож хувиргах
 ffmpeg -i foo.avi -r 1 -s WxH -f image2 foo-%03d.jpeg

@@ -1,4 +1,8 @@
-#title Debian Ubuntu тушаалууд
+-*- mode: org; -*-
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* Debian Ubuntu тушаалууд
 
 gdm2 ---
 эхлэх үеийн дууг хорих
@@ -77,3 +81,6 @@ sudo aptitude install xfonts-base  # үндсэн үсгийн маягууд ( 
 
 links
 http://ubuntuguide.org/wiki/Ubuntu:Karmic
+
+* ФЛЭШ суулгах
+sudo aptitude install ubuntu-restricted-extras  # дараа нь галт үнэгээ шинээр ачаалаад болно

@@ -1,4 +1,4 @@
--*- mode: org; -*-
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
 #+STARTUP: indent
 #+STARTUP: hidestars
 

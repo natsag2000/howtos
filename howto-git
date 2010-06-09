@@ -1,13 +1,15 @@
-#title ЖИТ заавар
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+STARTUP: indent
+#+STARTUP: hidestars
 
-Ерөнхий анх жит суулгасны дараах тохируулга.
-<example>
+* Ерөнхий анх жит суулгасны дараах тохируулга.
+
 git config --global user.name "My NAME"
 git config --global user.email my@email.address
-</example>
 
-Шинээр проект үүсгээд түүнийг сервер лүү илгээх.
-<example>
+
+* Шинээр проект үүсгээд түүнийг сервер лүү илгээх.
+
 mkidr test
 cd test
 git init
@@ -16,37 +18,40 @@ git add README
 git commit -m "first commit"
 git remote add origin git@github.com:natsag2000/testproject.git
 git push origin master
-</example>
 
-Хэрэв өөрийн гэсэн дотоод жит байгаа бол түүнийгээ сервер лүү нэмэх.
-<example>
+
+* Хэрэв өөрийн гэсэн дотоод жит байгаа бол түүнийгээ сервер лүү нэмэх.
+
 cd existing_git_repo
 git remote add origin git@github.com:natsag2000/testproject.git
 git push origin master
-</example>
 
-Зарим мэдэхэд илүүдэхгүй зүйлс:
-проект файл татаж авахдаа
-<example>
+
+* Зарим мэдэхэд илүүдэхгүй зүйлс:
+** проект файл татаж авахдаа
+
 git clone git://github.com/natsag2000/testproject.git
-</example>
 
-хэрэв ssh түлхүүрээр холбогддог бол татаж авахадаа
-<example>
+
+** хэрэв ssh түлхүүрээр холбогддог бол татаж авахадаа
+
 git clone ssh://github.com/natsag2000/testproject.git
-</example>
 
-ssh түлхүүрээ зөв тохируулсан эсэхээ шалгахдаа
-<exampel>
+
+* ssh түлхүүрээ зөв тохируулсан эсэхээ шалгахдаа
+
 ssh git@github.com
-</example>
 
-ssh түлхүүр хэрэглэсэн бол тохиргооны файл бэлдэнэ.
+
+* ssh түлхүүр хэрэглэсэн бол тохиргооны файл бэлдэнэ.
 .ssh/config
-<example>
+
 Host github.com
 	User git
 	Hostname github.com
 	PreferredAuthentications publickey
 	IdentityFile /path/to/rsa-private/or/public
-</example>
+
+* Төслийн ямар хаягаас татаж авсны мэдэх
+  git remote -v
+  git remote show origin

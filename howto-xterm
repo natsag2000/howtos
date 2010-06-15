@@ -1,9 +1,13 @@
-#title Xterm дээрх зарим тохиргоонууд
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Xterm дээрх зарим тохиргоонууд
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 .Xdefaults файл дотор юмуу эсвэл /etc/X11/app-defaults/Xterm дотор бичиж өгч болно. (.Xdefaults файлд бичихээр бол урдаа ХTerm гэж бичнэ)
 
-Alt товч дарах үед Escape дарсан мэт болгох ( эмакс хэрэглэх үед тун их ашиглагдана. )
+* Alt товч дарах үед Escape дарсан мэт болгох ( эмакс хэрэглэх үед тун их ашиглагдана. )
 *metaSendsEscape: true
 
-Гарнаас найман битийн оруулалт зөвшөөрөх ( монголоор бичихэд хэрэглэгддэг. )
+* Гарнаас найман битийн оруулалт зөвшөөрөх ( монголоор бичихэд хэрэглэгддэг. )
 *eightBitInput: false|true

@@ -1,15 +1,18 @@
 #-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Жит жаавар :)
+#+AUTHOR: nagi
 #+STARTUP: indent
 #+STARTUP: hidestars
 
 * Ерөнхий анх жит суулгасны дараах тохируулга.
-
+#+begin_src
 git config --global user.name "My NAME"
 git config --global user.email my@email.address
-
+#+end_src
 
 * Шинээр проект үүсгээд түүнийг сервер лүү илгээх.
 
+#+begin_src
 mkidr test
 cd test
 git init
@@ -18,40 +21,43 @@ git add README
 git commit -m "first commit"
 git remote add origin git@github.com:natsag2000/testproject.git
 git push origin master
-
+#+end_src
 
 * Хэрэв өөрийн гэсэн дотоод жит байгаа бол түүнийгээ сервер лүү нэмэх.
-
+#+begin_src
 cd existing_git_repo
 git remote add origin git@github.com:natsag2000/testproject.git
 git push origin master
-
+#+end_src
 
 * Зарим мэдэхэд илүүдэхгүй зүйлс:
 ** проект файл татаж авахдаа
-
+#+begin_src
 git clone git://github.com/natsag2000/testproject.git
-
+#+end_src
 
 ** хэрэв ssh түлхүүрээр холбогддог бол татаж авахадаа
-
+#+begin_src
 git clone ssh://github.com/natsag2000/testproject.git
-
+#+end_src
 
 * ssh түлхүүрээ зөв тохируулсан эсэхээ шалгахдаа
-
+#+begin_src
 ssh git@github.com
-
+#+end_src
 
 * ssh түлхүүр хэрэглэсэн бол тохиргооны файл бэлдэнэ.
-.ssh/config
 
+.ssh/config
+#+begin_src
 Host github.com
 	User git
 	Hostname github.com
 	PreferredAuthentications publickey
 	IdentityFile /path/to/rsa-private/or/public
-
+#+end_src
 * Төслийн ямар хаягаас татаж авсны мэдэх
+#+begin_src
   git remote -v
   git remote show origin
+#+end_src

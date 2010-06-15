@@ -1,4 +1,8 @@
-#title Mac дээрх порт хэрэглээ
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Mac дээрх порт хэрэглээ
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 * Порт шинэчлэлт
 sudo port -d selfupdate

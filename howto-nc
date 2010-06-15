@@ -1,4 +1,8 @@
-#title Сүлжээний швецарь хутга nc (netcat)
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Сүлжээний швецарь хутга nc (netcat)
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 * портын нээлттэй эсэхийг шалгах
 nc -v -w 1 localhost -z 1-2000
@@ -49,7 +53,6 @@ tar cz /etc | ssh user@host -c `cd /bak; cat > etc.tgz`
 tar cz /etc | ssh user@host -c `cd /bak; cat tar xz`
 өөр машинаас хуулах:
 ssh user@host -c `tar cz /etc` > /bak/etc.tgz
-
 
 * fifo ашиглах
 илгээх талд:

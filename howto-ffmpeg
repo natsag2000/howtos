@@ -1,12 +1,12 @@
 #-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: ffmpeg зэвсгийн хэрэглээ
+#+AUTHOR: nagi
 #+STARTUP: indent
 #+STARTUP: hidestars
 
-*ffmpeg зэвсгийн хэрэглээ
-
+* Суулгах (заавал унш)
 Анхаар: ffmpeg зэвсэг нь --enable-x11grab гэсэн сонголттой хөрвүүлэгдэх ёстой
 жишээ нь ./configure --extra-ldflags=-L/usr/X11R6/lib --enable-x11grab --enable-gpl
-
 * Дэлгэцийг шахалтгүй хэлбэртэй бичиж авах
 ffmpeg -f x11grab -r 25 -s 1392x1040 -i :0.0 -vcodec huffyuv -sameq Lossless-HuffYUV.avi
 

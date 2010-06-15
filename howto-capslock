@@ -1,48 +1,52 @@
-#title Capslock товчийг контрол товч болгох аргууд
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Capslock товчийг контрол товч болгох аргууд
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
-* Линукс машин дээр
+* Юникс машин дээр
 
 .xmodmap файлд юмуу эсвэл /etc/X11/Xmodmap дотор.
-<example>
+#+begin_src
 clear lock
 add control = Caps_Lock
-</example>
+#+end_src
 
 эсвэл өөр нэг бичих арга нь
-<example>
+#+begin_src
 remove Lock = Caps_Lock
 remove Control = Control_L
 keysym Caps_Lock = Control_L
 add Lock = Caps_Lock
 add Control = Control_L
-</example>
+#+end_src
 
 Шууд идэвхижүүлэхдээ, жишээ нь өмнөх бичиглэлийн аль нэгийг нь /etc/X11/Xmodmap файлд бичсэн бол:
-<example>
+#+begin_src
 xmodmap /etc/X11/Xmodmap
-</example>
+#+end_src
 
 Эсвэл холбогдох үед юмуу Х эхлэх үеийн файл дотор дараах оруулалт хийнэ. ( жишээ нь .bashrc дотор )
-<example>
+#+begin_src
 xmodmap ~/.xmodmap
-</example>
+#+end_src
 
 * БҮНДӨҮС машин дээр
 
 CapsLockIsCtrl.reg гэсэн файл үүсгээд дараах зүйлийг дотор нь бичээд тэрэн дээрээ хоёр дарж регистрт бүртүүлээд болно.
-<example>
+#+begin_src
 REGEDIT4
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
-</example>
+#+end_src
 
-Зарим мэдэхэд илүүдэхгүй зүйлс.
+* Зарим мэдэхэд илүүдэхгүй зүйлс.
 xev програмаар ямар товч ямар кодтойг харж болно. Харсан кодоо доорх тохиргооны keycodeof... хэсэгт бичнэ.
-<example>
+#+begin_src
 remove Lock = Caps_Lock
 remove Control = Control_L
 keycode <keycodeofcontrol> = Control_L
 keycode <keycodeofcapslock> = Control_L
 add Lock = Caps_Lock
 add Control = Control_L
-</example>
+#+end_src

@@ -1,4 +1,8 @@
-#title ЛАТЕКС хэрэглэх заавар
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: ЛАТЕКС хэрэглэх заавар
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 * Ubuntu Суулгах
 sudo aptitude install texlive-full  -> 445 MB
@@ -9,18 +13,18 @@ MacTex i-installer
 
 * LATEX пакет суулгах
 http://www.ctan.org хуудаснаас татаж авсан пакетыг /usr/share/texmf/tex/latex дотор хуулаад
-<example>
+#+begin_src
 sudo texhash
 эсвэл
 sudo mktexlsr
-</example>
+#+end_src
 тушаалыг гүйцэтгэнэ.
 
 хэрэглэгч зөвхөн өөрийнхөө санд суулгана гэвэл ~/texmf/tex/latex сан дотор татаж авсан пакетаа (жишээ нь mypackage.sty) хуулна.
 
 * LATEX unicode
 Юникодоор бичих боломжтой болгохын тулд latex-ucs пакетыг нэмж суулгах шаардлагатай.
-<example>
+#+begin_src
 \documentclass[12pt,paper=a4]{scrartcl}
 
 \usepackage{ucs}
@@ -29,14 +33,14 @@ sudo mktexlsr
 
 \begin{document}
 
-</example>
+#+end_src
 
 * Хөрвүүлэх
-<example>
+#+begin_src
 latex Test.tex  -> DVI файл үүсгэнэ.
 эсвэл
 pdflatex Test.tex -> PDF файл үүсгэнэ.
-</example>
+#+end_src
 
 * DVI PDF файл үзэх
 xdvi програмаар dvi файлуудыг харж болно.
@@ -44,7 +48,7 @@ xpdf програмаар pdf файлуудыг харж болно.
 
 * Үзүүлбэр бэлдзх
 latex-beamer пакетаар үзүүлбэр бэлдэж болдог.
-<example>
+#+begin_src
 \documentclass[utf8]{beamer} % utf8 dient für die Umlaute
 <Präambel>
 
@@ -57,7 +61,7 @@ latex-beamer пакетаар үзүүлбэр бэлдэж болдог.
  \end{frame}
  <usw.>
 \end{document}
-</example>
+#+end_src
 
 * Бичиг баримтын бүтэц
 

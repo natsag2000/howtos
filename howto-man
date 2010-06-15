@@ -1,12 +1,17 @@
-#title man тушаал тохируулах болон хэрэглэх
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: man тушаал тохируулах болон хэрэглэх
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
-manpath тушаалаар ямар ямар санд хайх нь харуулагдана.
+* Тохиргоо
+  manpath тушаалаар ямар ямар санд хайх нь харуулагдана.
 
-Ерөнхий тохиргоо /etc/manpath.conf дотор хийгддэг.
+  Ерөнхий тохиргоо /etc/manpath.conf дотор хийгддэг.
 
 * Өөрийн гэсэн сан нэмэх
-.tcshrc файл дотор:
-<example>
+  .tcshrc файл дотор:
+#+begin_src
 set MANPATH=`manpath`
 set MANPATH="${MANPATH}:/path/to/new/folder/man"
-<example>
+#+end_src

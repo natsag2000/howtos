@@ -1,15 +1,15 @@
 #-*- mode: org; mode:visual-line; mode: org-indent-*-
+#+TITLE: VirtualBox ийн хэрэглээ
+#+AUTHOR: nagi
 #+STARTUP: indent
 #+STARTUP: hidestars
 
-* VirtualBox ийн хэрэглээ
-
-** Guest Additions суулгах
+* Guest Additions суулгах
 Devices->Install Guest Additions гэж цэсийг VirtualBox дээр сонгосноор хэрэглэгч үйлдлийн систем дээр СД хийсэн хэмээн танигддаг. Хэрэглэгчийн үйлдлийн систем дээр
 sudo /media/cdrom/VBoxLinuxAdditions.run
 гэж ажиллуулж суулгасны дараа гараад ороод ирэхэд хангалттай.
 
-** Дэлгэцийн зуралтыг өөрчлөх
+* Дэлгэцийн зуралтыг өөрчлөх
 Дараах тушаалуудыг консолоос гараар өгч дэлгэцийн зуралтыг ихэсгэнэ.
 
 Өөрөө гараар зааж өгөх:
@@ -24,6 +24,6 @@ VBoxManage setextradata global GUI/MaxGuestResolution >width,height<
 Хэрэв буцаад анхдагч тохируулганд авчрахыг хүсвэл:
 VBoxManage setextradata global GUI/MaxGuestResolution auto
 
-** Бусад тохируулах аргууд
+* Бусад тохируулах аргууд
 хэрэглэгч үйлдлийн системийн цагийг UTC болгох (үбүнтү, дэбиан)
 VBoxManage setextradata VM_NAME "VBoxInternal/Devices/mc146818/0/Config/UseUTC" 1

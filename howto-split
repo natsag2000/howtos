@@ -1,16 +1,22 @@
-#title Том файлыг хуваах
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Том файлыг хуваах
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 * Жижиглэн хуваах
 
-<example>
 Анхдагч тохиргоогоороо хуваагдсан файлууд ардаа цагаан толгойн үсэг авч хуваагддаг. ( -b 3m гэдэг нь гурван мега болгож хуваа гэсэн үг )
+#+begin_src
 split -b 3m BIG_FILE  small_file_name
+#+end_src
 
 Хэрэв ардаа тоотой хуваая гэвэл:
+#+begin_src
 split -d -b 3m BIG_FILE  small_file_name
-</exampe>
+#+end_src
 
 * Буцааж нийлүүлэх
-<example>
+#+begin_src
 cat small_file_name* > BIG_FILE
-</example>
+#+end_src

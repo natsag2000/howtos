@@ -1,10 +1,16 @@
-#title xrandr хэрэглээ
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: xrandr хэрэглээ
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
+* Тусламж авах
 xrandr --help
 man xrandr
 man intel # интел төрлийн дэлгэцийн драйверууд
 man radeon # АТИ төрлийн дэлгэцийн драйверууд
 
+* Тохируулах
 Debian ubuntu машинууд дээр xorg.conf тохиргоогоо ЦЭВЭРЛЭСЭН (хуучин дэлгэцийн сонголтуудыг хорих, эсвэл шинээр үүсгэх) байх ёстой
 sudo dpkg-reconfigure -phigh xserver-xorg # хуучин машинууд дээр
 sudo X -configure                         # 9.04 өөс дээшхи машинууд дээр
@@ -18,6 +24,7 @@ Section "Screen"
         EndSubSection
 EndSection
 
+* Шалгах
 ghc суусан бол:
 ghc -e Graphics.X11.Xinerama.compiledWithXinerama тушаал өгөхөөр true буцаж ирэхийг шалгах
 ghc -e "Graphics.X11.openDisplay [] >>= Graphics.X11.Xinerama.getScreenInfo"  тушаал өгөхөөр дэлгэцийн хэмжээнүүд харуулахыг шалгах
@@ -28,7 +35,7 @@ xrandr -q  өгөхөөр хэдэн дэлгэц ямар зуралттайг 
 xrandr --output DVI-1 --left-of DVI-0'
 
 Холбогдох үед автоматаар хэрэгжүүлэхээр бол /etc/X11/Xsession.d/45custom_xrandr-settings файл дотор бичиж үлдээнэ:
-<example>
+#+begin_src
 
 # If an external monitor is connected, place it with xrandr
  
@@ -65,8 +72,9 @@ else
     xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --off
 fi
 
-</example>
-links
+#+end_src
+
+* Нэмэлт холбоос
 http://www.thinkwiki.org/wiki/Xorg_RandR_1.2
 http://khushildep.blogspot.com/2009/11/xmonad-karmic-dual-head.html
 

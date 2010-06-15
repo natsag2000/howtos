@@ -1,49 +1,63 @@
-#title Нууц хувиргалт болон задаргаа
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Нууц хувиргалт болон задаргаа
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 * Нууцалж хөрвүүлэх
 
-<example>
+#+begin_src
 openssl enc -a -salt -bf -in testfile -out testfile-enc
-</example>
+#+end_src
 
 * Задлах
-<example>
+#+begin_src
 openssl enc -d -a -salt -bf -in testfile-enc -out mytestfile
-</example>
+#+end_src
 
 * Нууц хувиргалт хийх ( түлхүүрээр )
 
-<example>
+#+begin_src
 openssl rsautl -enc -inkey /path/to/my_private.key < test.txt > test-enc.txt
-</example>
+#+end_src
 
 * Задлах ( хувийн түлхүүрээр )
 
-<example>
+#+begin_src
 openssl rsautl -decrypt -inkey /path/to/my_private.key < test-enc.txt > test-zadarsan.txt
-</example>
+#+end_src
 
 * Хоёртын файлыг ( бинар ) үсгэн хэлбэрт хувиргах
-<example>
+#+begin_src
 base64 BINARY_FILE > ASCII_FILE
-</example>
+#+end_src
 
 * АSCII файлаа буцааж хоёртын болгох
-<example>
+#+begin_src
 base64 -d ASCII_FILE > BINARY_FILE
-</example>
+#+end_src
 
 * RSA Гэрчилгээ үүсгэх
-> openssl genrsa -out private.pem 2048
+#+begin_src
+openssl genrsa -out private.pem 2048
+#+end_src
 
 * Олон нийтэд зориулсан public түлхүүрээ салгаж авах
-> openssl rsa -in private.pem -out public.pem -outform PEM -pubout    # PEM хэлбэр нь аски текст хэлбэртэй байдаг.
+#+begin_src
+ openssl rsa -in private.pem -out public.pem -outform PEM -pubout    # PEM хэлбэр нь аски текст хэлбэртэй байдаг.
+#+end_src
 
 * Өөр хүний нийтийн түлхүүрээр түлхүүрдэх
-> openssl rsautl -encrypt -inkey others_public.pem -pubin -in input_file.txt -out output_file_enc
+#+begin_src
+openssl rsautl -encrypt -inkey others_public.pem -pubin -in input_file.txt -out  output_file_enc
+#+end_src
 
 * Задлах
-> openssl rsautl -decrypt -inkey private.pem -in input_file_enc -out output_file.txt
+#+begin_src
+openssl rsautl -decrypt -inkey private.pem -in input_file_enc -out output_file.txt
+#+end_src
 
 * Хувийн түлхүүрэндээ нууц үг өгөх
+#+begin_src
 openssl rsa -in private.pem -des3 -out private_new.pem
+#+end_src

@@ -1,7 +1,13 @@
-#title gmail from emacs
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: gmail from emacs
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
-.mew.el файлаас үндсэн тохиргоогоо уншдаг
-=========================================
+* Тохиргоо
+=.mew.el= файлаас үндсэн тохиргоогоо уншдаг
+
+#+begin_src
 ;; портын дугаар болон серверийн нэр нь өөр машинаас порт туннел хэрэглэхээр
 ;; тохируулсан байгааг анзаарна уу! тунел хэрэглээгүй бол шууд серверийн нэр болон
 ;; холбогдох портын дугаарыг нь бичих хэрэгтэй.
@@ -43,10 +49,11 @@
 (set-default 'mew-decode-quoted 't)
 (setq mew-pop-delete nil)
 (setq mew-ssl-verify-level 0)  ;; otherwise certficate verification failuer!
+#+end_src
 
-.emacs файл доторх дараахыг нэмж өгнө
-=====================================
+* дот-эмакс файлд оруулах
+#+begin_src
 (autoload 'mew "mew" nil t)
 (autoload 'mew-send "mew" nil t)
-
+#+end_src
 

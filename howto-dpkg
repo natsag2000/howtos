@@ -1,4 +1,8 @@
-#title Үбүнтү дээрх пакет зохион байгуулалт
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Үбүнтү дээрх пакет зохион байгуулалт
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
 * Суугдсан пакетуудыг жагсаах
 dpkg --get-selections
@@ -24,4 +28,4 @@ sudo apt-file search COMMAND
 
 * пакетын эх кодыг нь татаж авах
 
-sudo apt-get source PACKAGENAME
+  sudo apt-get source PACKAGENAME

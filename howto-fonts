@@ -1,4 +1,6 @@
--*- mode: org; -*-
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Үсгийн маяг
+#+AUTHOR: nagi
 #+STARTUP: indent
 #+STARTUP: hidestars
 
@@ -8,3 +10,6 @@
 - ~/.fonts дотор шинээр суулгах үсгийн маягаа хуулах
 - sudo fc-cache -f -v бүх үсгийн маягаа Х дээр сэргээж шинэчлэх
 - fc-list бүх суусан үсгийн маягийг харуулах
+
+* TODO Хийх зүйлс
+нэмэлт заавар оруулах

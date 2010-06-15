@@ -1,38 +1,44 @@
-#title Чухал файлын жагсаалт
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Чухал файлын жагсаалт
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
 
-Файл
-==============
+* Файл
 
-* .tcsh
+** .tcsh
 Миний бүрхүүл
 
-* .abcde
+** .abcde
 Дуу хувиргах тохиргоо
 
-* .mplayer
+** .mplayer
 Кино дүрс тоглуулах тохиргоо
 
-* .gitconfig
+** .gitconfig
 ЖИТ тохиргоо
 
-* .erlang .erlang_cookie
+** .erlang .erlang_cookie
 Эрланг эхлүүлэхэд уншдаг файл
 
-* .Xdefaults .xinitrc
+** .Xdefaults .xinitrc
 Х сервер эхлэхэд уншина
 
-* .Xmodmap
+** .Xmodmap
 Х сервер эхлэх үедээ гарын байрлал унших код
 
-Сан
-==============
 
-* .ssh
+* Сан
+
+** .ssh
 Энд нууц хувиргалт хийхэд хэрэглэгддэг түлхүүрүүд хадгалаастай.
 
-* .nuutsugs
+** .nuutsugs
 Нууц хувиргалттай серверүүд рүү холбоход хэрэглэгдэх нэр болон нууц үгс
 
-* .xmonad
+** .xmonad
 Дуртай дэлгэцийн горим
 
+
+* TODO Хийх зүйлс
+  Цэгцлэх, нэмэлт тайлбар өгөх

@@ -1,4 +1,6 @@
--*- mode: org; -*-
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Дэбиан Үбүнтү машин дээрх зарим аргачлалууд
+#+AUTHOR: nagi
 #+STARTUP: indent
 #+STARTUP: hidestars
 
@@ -30,7 +32,6 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 957E3467
 sudo apt-key add sun_vbox.asc
 
 Төгсгөлд нь sudo aptitude update тушаалаар пакет баазаа сэргээдэг.
-
 
 * startup, daemon control
 жишээ нь gdm буюу гномын эхлээд бүртгэдэг цонхыг хорих/зогсоох
@@ -77,10 +78,11 @@ pulseaudio хэрэглэж байгаа бол xmonad дээр pulseaudio -D г
 * fonts
 sudo aptitude install xfonts-base  # үндсэн үсгийн маягууд ( юникод үсгийн маяг бас агуулсан байгаа)
 
-
-
 links
 http://ubuntuguide.org/wiki/Ubuntu:Karmic
 
 * ФЛЭШ суулгах
 sudo aptitude install ubuntu-restricted-extras  # дараа нь галт үнэгээ шинээр ачаалаад болно
+
+* TODO Хийгдэх зүйлс
+Цэглэх

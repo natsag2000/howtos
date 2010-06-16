@@ -1,0 +1,34 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: дворак гар луу шилжих
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* X гүй консол дээр солих
+  loadkeys dvorak
+  loadkeys us
+
+** анхдагч горимд буцаах
+   loadkeys -d
+
+* Х дээрх консол дээр солих
+  setxkbmap dvorak
+  setxkbmap us
+
+** Өөр хэл дээр мөртлөө дворак хувилбарыг нь сонгох
+   setxkbmap -layout de -variant dvorak
+
+* Систем даяар тохируулах (дэбиан, үбүнтү)
+  sudo dpkg-reconfigure console-setup
+
+* Нэмэлт аргууд
+  alias asdf "loadkeys dvorak"
+  alias aoeu "loadkeys us"
+эсвэл
+  alias asdf "setxkbmap dvorak"
+  alias aoeu "setxkbmap us"
+
+  $DISPLAY хувьсагчийг шалгаад Х ачаалсан эсэхийг магадласан скрипт байвал бүр зүгээр.
+
+* Нэмэлт холбоос
+  http://dvorak.mwbrooks.com/

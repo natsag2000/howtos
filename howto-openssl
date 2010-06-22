@@ -1,5 +1,5 @@
 #-*- mode: org; mode:visual-line; mode:org-indent -*-
-#+TITLE: Нууц хувиргалт болон задаргаа
+#+TITLE: Нууц хувиргалт, задаргаа, харах болон шалгах
 #+AUTHOR: nagi
 #+STARTUP: indent
 #+STARTUP: hidestars
@@ -46,6 +46,15 @@ openssl genrsa -out private.pem 2048
 #+begin_src
  openssl rsa -in private.pem -out public.pem -outform PEM -pubout    # PEM хэлбэр нь аски текст хэлбэртэй байдаг.
 #+end_src
+ өөр арга:
+#+begin_src
+ openssl x509 -inform pem -in certificate.pem -pubkey -noout > publickey.pem
+#+end_src
+
+** р12 хэлбэртэй файлаас нийтийн түлхүүрээ салгах
+#+begin_src
+openssl pkcs12 -in private.p12 -out myPublicKey.pem -clcerts -nokeys
+#+end_src
 
 * Өөр хүний нийтийн түлхүүрээр түлхүүрдэх
 #+begin_src
@@ -61,3 +70,34 @@ openssl rsautl -decrypt -inkey private.pem -in input_file_enc -out output_file.t
 #+begin_src
 openssl rsa -in private.pem -des3 -out private_new.pem
 #+end_src
+
+* Гэрчилгээ харах
+** DER гэрчилгээг харах
+#+begin_src
+   openssl x509 -noout -text -in datei.cer -inform DER
+   openssl x509 -noout -text -in datei.cer -inform DEM
+#+end_src
+** pkcs12 гэрчилгээг харах
+#+begin_src
+   openssl pkcs12 -info -nokeys -in certificate.p12
+#+end_src
+
+* Гэрчилгээг хувиргах
+** DER -> PEM
+#+begin_src
+openssl x509 -inform DER -in user.cer -out user.pem -outform pem
+#+end_src
+** DER -> pkcs#7
+#+begin_src
+openssl crl2pkcs7 -nocrl -certfile certificate.cer -outform der -out certficate.p7b
+#+end_src
+* OSCP серверээс лавлах
+#+begin_src
+openssl ocsp -issuer issuer.pem -cert user.pem -text -CAfile issuer.pem -url http://ocsp.bnotk.de/ocsp/bnotk/qsig
+openssl ocsp -respin <RESP_FILE.der> -text
+#+end_src
+* Хэрэгтэй холбоос
+http://gagravarr.org/writing/openssl-certs/
+http://sial.org/howto/openssl/
+http://www.vanemery.com/Linux/Apache/openSSL.html
+

@@ -30,6 +30,35 @@ git remote add origin git@github.com:natsag2000/testproject.git
 git push origin master
 #+end_src
 
+* ssh тохируулга
+  ~/.ssh/config файл дотор: (эхний болон гурав дахь хоёрыг шалгах хэрэгтэй, нэг нь байхад хангалттай байж магадгүй, corkscrew суусан байх ёстой байж ч магадгүй)
+#+begin_src
+  Host github.com
+  User git
+  HostName github.com
+  Port 22
+  TCPKeepAlive yes
+  IdentityFile /home/path/to/.ssh/public_key(n_rsa)
+#  IdentitiesOnly yes
+
+Host git.savannah.gnu.org
+  User nagi
+  Hostname git.savannah.gnu.org
+  port 22
+  TCPKeepAlive yes
+  IdentityFile /home/path/to/.ssh/public_key(n_rsa)
+  IdentitiesOnly yes
+#  PreferredAuthentications publickey
+
+Host gitproxy
+  User git
+  HostName ssh.github.com
+  Port 443
+  ProxyCommand /usr/bin/corkscrew proxy.host proxy.port %h %p
+#  PreferredAuthentications publickey
+  IdentityFile /home/path/to/.ssh/public_key(n_rsa)
+#+end_src
+
 * Зарим мэдэхэд илүүдэхгүй зүйлс:
 ** проект файл татаж авахдаа
 #+begin_src

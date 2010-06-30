@@ -89,4 +89,21 @@ Host github.com
 #+begin_src
   git remote -v
   git remote show origin
+#+end_srcи
+* Эх кодонд хамаарахгүй хэрэггүй файлуудыг устгах
+  Устгахаасаа өмнөх зааж өгсөн санд байгаа нэмэлт үүссэн хэрэггүй файлуудыг жагсааж харуулах:
+#+begin_src
+  git clean -n -d <path>
+#+end_src
+  Устгах даа -f гэж хүчээр устгахыг зааж өгч бас болно
+#+begin_src
+  git clean -f -d <path>
+#+end_src
+  -x сонголтоор жит-ийн алгасах файлуудыг оруулан тооцож болно
+#+begin_src
+  git clean -x -f -d <path>
+#+end_src
+  -X сонголтоор зөвхөн алгасах файлуудын жагсаалтад байгаа файлуудыг  сонгож устгана
+#+begin_src
+  git clean -Х -f -d <path>
 #+end_src

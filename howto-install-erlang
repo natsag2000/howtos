@@ -4,6 +4,9 @@
 #+STARTUP: indent
 #+STARTUP: hidestars
 
+* Суулгахаас өмнө
+  үбүнтү машин дээр дараах багцууд суусан байх хэрэгтэй:
+  sudo apt-get install build-essential libncurses-dev libssl-dev m4 subversion autoconf automake libgd-dev
 * Татаж авах
 http://www.erlang.org/download.html хаягаас хамгийн сүүлийн хувилбараас source гэсэн баганад буй эх кодыг нь татаж авна. ( otp_src_RXXXXX.tar.gz )
 

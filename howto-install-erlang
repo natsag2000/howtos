@@ -4,6 +4,50 @@
 #+STARTUP: indent
 #+STARTUP: hidestars
 
+* Санал болгосон суулгах арга барил
+  Дараах сангийн зохицуулалтаар суулгавал зохилтой.
+  current гэдэг нь releases дотор байгаа хамгийн сүүлийн үеийн хувилбар луу software холбоос хийсэн байвал зохино.
+
+#+begin_src
+  ~/erlang
+    -- current -> releases/R14A
+    -- releases
+       -- R13B01
+       -- R14A
+    -- site
+       -- mochiweb-0.5
+       -- ...
+    -- setup.sh
+#+end_src
+
+    setup.sh файлыг системийнхээ ачаалагддаг бүрхүүлд зааж өгөх хэрэгтэй.
+    Жишээ нь ~/.bash_profile дотроо ". ~/erlang/setup.sh" гэж оруулах (урдаа цэгэн тушаал буйг анзаарна уу).
+    setup.sh дараах хэлбэртэй файл байхад болно:
+
+#+begin_src
+#!/bin/sh
+
+SHELLVAR=`$SHELL -c 'echo $0' | xargs basename`
+
+case $SHELLVAR in
+    bash)
+        export ERL_ROOT=$HOME/erlang/current
+        export ERL_LIBS=$HOME/erlang/site
+        export MANPATH=$ERL_ROOT/man:$MANPATH
+        export PATH=$ERL_ROOT/bin:$PATH
+        ;;
+    tcsh|csh)
+        setenv ERL_ROOT $HOME/erlang/current
+        setenv ERL_LIBS $HOME/erlang/site
+        setenv MANPATH $ERL_ROOT/man:$MANPATH
+        set path=($path $ERL_ROOT/bin)
+        ;;
+    *)
+        ;;
+esac
+
+#+end_src
+
 * Суулгахаас өмнө
   үбүнтү машин дээр дараах багцууд суусан байх хэрэгтэй (sudo apt-get install ....):
   build-essential
@@ -87,4 +131,12 @@ set MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
 MANPATH=`manpath`
 MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
 export MANPATH
+#+end_src
+
+* Өөр нэмэлт багц суулгах
+~/.erlang  файл дотор байгаа тушаалыг эрланг эхлэх үедээ гүйцэтгэдэг. Тийм болохоор шинээр суулгая гэсэн багцаа дараах маягаар суулгаж болно:
+#+begin_src
+io:format("Adding libs in HOME/.erlang\n", []).
+code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
+io:format(".erlang rc finished\n", []).
 #+end_src

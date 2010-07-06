@@ -77,8 +77,8 @@ cd otp_src_R1XXX
 Стандарт сан дотор суулгахаар бол ( /usr/local/{bin,lib/erlang,man/man1} гэсэн сангуудад файлууд хуулагдана )
 ./configure
 
-хэрэв өөрийн тусгай санд суулгахаар бол ( жишээ нь /opt/myerlang сан дотор суулгая гэвэл )
-./configure --prefix=/opt/myerlang
+хэрэв өөрийн тусгай санд суулгахаар бол ( жишээ нь санал болгосон хэлбэрээр суулгахаар бол )
+./configure --prefix=~/erlang/releases/R1XXX
 
 хэрэв олон процесортой бол
 ./configure --enable-smp-support

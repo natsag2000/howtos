@@ -134,7 +134,5 @@ erl -man os
 * Өөр нэмэлт багц суулгах
 ~/.erlang  файл дотор байгаа тушаалыг эрланг эхлэх үедээ гүйцэтгэдэг. Тийм болохоор шинээр суулгая гэсэн багцаа дараах маягаар суулгаж болно:
 #+begin_src
-io:format("Adding libs in HOME/.erlang\n", []).
 code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
-io:format(".erlang rc finished\n", []).
 #+end_src

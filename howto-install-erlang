@@ -174,3 +174,9 @@ code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
   - Сууснаа дахин шалгах
     шинэ тэрминал нээгээд erl гэхэд ажиллаж байвал суугдлаа гэсэн үг.
     which erl гээд замыг нь бас харж болно.
+  - doc ба man гэсэн бичиг баримтуудыг нь татаж авах
+  - татаж авсан бичиг баримтаа $HOME/erlang/releases/R1XXX/lib/erlang дотор задлах
+    tar xvfz otp_doc_xxxx.tar.gz -C $HOME/erlang/releases/R1XXX/lib/erlang
+    tar xvfz otp_man_xxxx.tar.gz -C $HOME/erlang/releases/R1XXX/lib/erlang
+  - бичиг баримт суусныг шалгах
+    erl -man lists

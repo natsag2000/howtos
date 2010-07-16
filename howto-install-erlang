@@ -68,7 +68,7 @@ set path=($path $ERL_ROOT/bin)
    Дараах хоёр тушаалаар эх кодыг нь татаж авахаасаа өмнө шаардлагатай бүх багцыг суулгаж болно.
 #+begin_src
    sudo apt-get build-dep erlang
-   sudo apt-get install java-gcj-compat java-gcj-compat-dev
+   sudo apt-get install java-gcj-compat java-gcj-compat-dev fop
 #+end_src
 * Татаж авах
 http://www.erlang.org/download.html хаягаас хамгийн сүүлийн хувилбараас source гэсэн баганад буй эх кодыг нь татаж авна. ( otp_src_RXXXXX.tar.gz )
@@ -136,3 +136,40 @@ erl -man os
 #+begin_src
 code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
 #+end_src
+* Нэгтгээд товчилсон заавар ( үбүнтү )
+  - Өмнө суусан байгаа эрланг байвал устгах ( анх удаа энэ заавраар суулгаж байгаа бол! )
+    sudo aptitude search erlang тушаалын гаралтанд буй бүх багц урдаа i тэмдэггүй байх ёстой.
+    Хэрэв тийм бол устгана. Жишээ нь: sudo apt-get -f install erlang-base  apt-get remove --purge erlang-base
+    эцсийн үр дүн erl тушаал танигдахгүй байх ёстой.
+    Хэрэв анх удаагаа энэ заавраар суулгаж байгаа бол erl ийн зам нь өөрийн тохируулсан зам байвал болно!
+  - Эрланг татаж авах ( жишээ нь $HOME/sources/ дотор )
+  - Санал болгосон сангийн дэд бүтэц бэлдэх ( анх удаа энэ заавраар суулгаж байгаа бол! )
+    mkdir -p $HOME/erlang/releases
+    mkdir -p $HOME/erlang/site
+    touch ~/erlang/setup_bash
+    ~/erlang/setup_bash файл дотроо дээр буй оруулгаас хуулж тавих
+  - Хөрвүүлгэнд шаардлагатай файлуудыг суулгах ( анх удаа энэ заавраар суулгаж байгаа бол! )
+    sudo apt-get build-dep erlang
+    sudo apt-get install java-gcj-compat java-gcj-compat-dev
+    sudo apt-get install fop
+  - Татаж авсан эрлангаа задлах
+    жишээ нь: cd $HOME/sources && tar xvfz otp_src_R1XXX.tar.gz
+  - Тохируулах
+    R1XXX ийн оронд татаж авсан хувилбарынхаа дугаарыг бичээрэй (R13B04 гэх мэт)
+    ./configure --prefix=$HOME/erlang/releases/R1XXXX
+  - Хөрвүүлэх
+    make
+  - Суулгах
+    make install
+  - Суулгаснаа шалгах
+    $HOME/erlang/releases/R1XXXX/bin/erl гэж ажиллаж байвал суугдсан байна гэсэн үг
+  - Software Link үүсгэх
+    cd $HOME/erlang
+    ln -s $HOME/erlang/releases/R1XXXX current
+    өмнөх тушаал дээр анхаарах зүйл: R1ХХХ ийн ард / тэмдэггүй . ТАБ дарж гүйцээх үед ардаа / тэмдэг авдаг тул арилгах хэрэгтэй!
+    хэрэв анх удаа биш өөр эрланг хувилбар суулгасан бол эхлээд current ийг устгаад шинээр суулгасан хувилбар луугаа холбож үүсгэнэ.
+  - $HOME/.bash_profile дотроо дараах оруулгыг оруулна
+    source $HOME/erlang/setup_bash
+  - Сууснаа шалгах
+    шинэ тэрминал нээгээд erl гэхэд ажиллаж байвал суугдлаа гэсэн үг.
+    which erl гээд замыг нь бас харж болно.

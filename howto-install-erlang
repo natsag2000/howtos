@@ -29,7 +29,7 @@
 #+begin_src
 export ERL_ROOT=$HOME/erlang/current
 export ERL_LIBS=$HOME/erlang/site
-export MANPATH=$ERL_ROOT/lib/erlang/man:$MANPATH
+###export MANPATH=$ERL_ROOT/lib/erlang/man:$MANPATH
 export PATH=$ERL_ROOT/bin:$PATH
 #+end_src
 
@@ -45,7 +45,7 @@ setup_tcsh файл дараах хэлбэртэй байх болно.
 #+begin_src
 setenv ERL_ROOT $HOME/erlang/current
 setenv ERL_LIBS $HOME/erlang/site
-setenv MANPATH $ERL_ROOT/lib/erlang/man
+###setenv MANPATH $ERL_ROOT/lib/erlang/man
 set path=($path $ERL_ROOT/bin)
 #+end_src
 

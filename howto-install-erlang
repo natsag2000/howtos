@@ -159,6 +159,7 @@ code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
     ./configure --prefix=$HOME/erlang/releases/R1XXXX
   - Хөрвүүлэх
     make
+    Хэрэв хөрвүүлэх үед жааватай холбогдолтой алдаа гарвал өмнөх тохиргоог --without-javac сонголттой хийх хэрэгтэй
   - Суулгах
     make install
   - Суулгаснаа шалгах
@@ -170,6 +171,6 @@ code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
     хэрэв анх удаа биш өөр эрланг хувилбар суулгасан бол эхлээд current ийг устгаад шинээр суулгасан хувилбар луугаа холбож үүсгэнэ.
   - $HOME/.bash_profile дотроо дараах оруулгыг оруулна
     source $HOME/erlang/setup_bash
-  - Сууснаа шалгах
+  - Сууснаа дахин шалгах
     шинэ тэрминал нээгээд erl гэхэд ажиллаж байвал суугдлаа гэсэн үг.
     which erl гээд замыг нь бас харж болно.

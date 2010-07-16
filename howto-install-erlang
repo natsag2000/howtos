@@ -6,7 +6,7 @@
 
 * Санал болгосон суулгах арга барил
   Дараах сангийн зохицуулалтаар суулгавал зохилтой.
-  current гэдэг нь releases дотор байгаа хамгийн сүүлийн үеийн хувилбар луу software холбоос хийсэн байвал зохино.
+  current гэдэг нь releases дотор байгаа хамгийн сүүлийн үеийн хувилбар луу software холбоос хийсэн байвал зохино (ln -s releases/RXXX current).
 
 #+begin_src
   ~/erlang
@@ -17,38 +17,40 @@
     -- site
        -- mochiweb-0.5
        -- ...
-    -- setup.sh
+    -- setup_bash
+    -- setup_tcsh
 #+end_src
 
-    setup.sh файлыг системийнхээ ачаалагддаг бүрхүүлд зааж өгөх хэрэгтэй.
-    Жишээ нь ~/.bash_profile дотроо ". ~/erlang/setup.sh" гэж оруулах (урдаа цэгэн тушаал буйг анзаарна уу).
-    setup.sh дараах хэлбэртэй файл байхад болно:
+    setup_bash файлыг системийнхээ ачаалагддаг бүрхүүлд зааж өгөх хэрэгтэй.
+    Жишээ нь ~/.bash_profile дотроо
+    ". ~/erlang/setup.sh" гэж оруулах  (урдаа цэгэн тушаал буйг анзаарна уу).
+    setup_bash нь бааш бүрхүүлд зориулсан бөгөөд дараах хэлбэртэй байж болно:
 
 #+begin_src
-#!/bin/sh
+export ERL_ROOT=$HOME/erlang/current
+export ERL_LIBS=$HOME/erlang/site
+export MANPATH=$ERL_ROOT/lib/erlang/man:$MANPATH
+export PATH=$ERL_ROOT/bin:$PATH
+#+end_src
 
-SHELLVAR=`$SHELL -c 'echo $0' | xargs basename`
-
-case $SHELLVAR in
-    bash)
-        export ERL_ROOT=$HOME/erlang/current
-        export ERL_LIBS=$HOME/erlang/site
-        export MANPATH=$ERL_ROOT/man:$MANPATH
-        export PATH=$ERL_ROOT/bin:$PATH
-        ;;
-    tcsh|csh)
-        setenv ERL_ROOT $HOME/erlang/current
-        setenv ERL_LIBS $HOME/erlang/site
-        setenv MANPATH $ERL_ROOT/man:$MANPATH
-        set path=($path $ERL_ROOT/bin)
-        ;;
-    *)
-        ;;
-esac
-
+  setup_tcsh файл нь tcsh бүрхүүлтэй хүнд зориулсан бөгөөд ~/.tcsh файлдаа дараах оруулгыг оруулж өгснөөр уг файлыг дуудна.
+#+begin_src
+# erlang configuration. Check owner and read flag and then import!
+set ERLSETUP = ~/erlang/setup_tcsh
+if ( -o $ERLSETUP && -r $ERLSETUP ) then
+  source $ERLSETUP
+endif
+#+end_src
+setup_tcsh файл дараах хэлбэртэй байх болно.
+#+begin_src
+setenv ERL_ROOT $HOME/erlang/current
+setenv ERL_LIBS $HOME/erlang/site
+setenv MANPATH $ERL_ROOT/lib/erlang/man
+set path=($path $ERL_ROOT/bin)
 #+end_src
 
 * Суулгахаас өмнө
+** Сонгомол арга
   үбүнтү машин дээр дараах багцууд суусан байх хэрэгтэй (sudo apt-get install ....):
   build-essential
   libncurses-dev
@@ -62,6 +64,12 @@ esac
   xsltproc
   fop
 
+** Үбүнтү дээрх өөр шинэ арга
+   Дараах хоёр тушаалаар эх кодыг нь татаж авахаасаа өмнө шаардлагатай бүх багцыг суулгаж болно.
+#+begin_src
+   sudo apt-get build-dep erlang
+   sudo apt-get install java-gcj-compat java-gcj-compat-dev
+#+end_src
 * Татаж авах
 http://www.erlang.org/download.html хаягаас хамгийн сүүлийн хувилбараас source гэсэн баганад буй эх кодыг нь татаж авна. ( otp_src_RXXXXX.tar.gz )
 
@@ -71,10 +79,12 @@ tar xvfz otp_src_R1XXX.tar.gz
 #+end_src
 
 * Тохируулах
+тохируулж болох нэмэлт өгөгдлүүдийг ./configure --help гэж харна уу
 
-cd otp_src_R1XXX
+
 #+begin_src
-Стандарт сан дотор суулгахаар бол ( /usr/local/{bin,lib/erlang,man/man1} гэсэн сангуудад файлууд хуулагдана )
+  cd otp_src_R1XXX
+  Стандарт сан дотор суулгахаар бол ( /usr/local/{bin,lib/erlang,man/man1} гэсэн сангуудад файлууд хуулагдана )
 ./configure
 
 хэрэв өөрийн тусгай санд суулгахаар бол ( жишээ нь санал болгосон хэлбэрээр суулгахаар бол )
@@ -102,11 +112,13 @@ make install   ( хэрэв стандарт санд дотор суулгах 
 хэрэв стандарт сан дотор суулгасан бол: ( рүүт эрх шаардлагатай )
 #+begin_src
 tar xvfz opt_doc_html_XXXX.tar.gz -C /usr/local/lib/erlang/
+tar xvfz opt_doc_man_XXXX.tar.gz -C /usr/local/lib/erlang/
 #+end_src
 
 Хэрэв өөрийн гэсэн санд суулгасан бол: ( дээрх жишээний санг авч үзье )
 #+begin_src
-tar xvfz opt_doc_html_XXXX.tar.gz -C /opt/myerlang/lib/erlang
+tar xvfz opt_doc_html_XXXX.tar.gz -C ~/erlang/releases/R1XXX/lib/erlang
+tar xvfz opt_doc_man_XXXX.tar.gz -C ~/erlang/releases/R1XXX/lib/erlang
 #+end_src
 
 * Суулгаснаа шалгах
@@ -117,20 +129,6 @@ erl --version
 * Бичиг баримт суусныг шалгах
 #+begin_src
 erl -man os
-#+end_src
-
-* Бичиг баримтын man хуудаснуудыг системийн man дотор оруулах
-.tcshrc файл дотроо:
-#+begin_src
-set MANPATH=`manpath`
-set MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
-#+end_src
-
-.bashrc хэрэглэдэг бол:
-#+begin_src
-MANPATH=`manpath`
-MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
-export MANPATH
 #+end_src
 
 * Өөр нэмэлт багц суулгах

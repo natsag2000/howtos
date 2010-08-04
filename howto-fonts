@@ -11,5 +11,16 @@
 - sudo fc-cache -f -v бүх үсгийн маягаа Х дээр сэргээж шинэчлэх
 - fc-list бүх суусан үсгийн маягийг харуулах
 
+** Эмакс дээр буферийн үсгийн маягийг солих
+*** үсгийн маягийн мэдээллийг авах
+    скрэтч буфер дээр бичээд C-j дарж гүйцэтгэнэ
+    (prin1-to-string (x-list-fonts "MongolianScript"))
+    жишээ гаралт:
+    "(\"-apple-MongolianScript-medium-italic-normal-synthItal-*-*-*-*-p-0-iso10646-1\" \"-apple-MongolianScript-medium-normal-normal-*-*-*-*-*-p-0-iso10646-1\")"
+
+*** буферийн үсгийн маягийг өөрчлөх
+    - http://junis.orgfree.com/SetBufferFont.el суулгана ( load-file гэж бас болно)
+    - М-х set-buffer-font гээд жишээ нь -apple-MongolianScript-medium-normal-normal-14-*-*-*-*-p-0-iso10646-1 гэж оруулж өөрчлөнө
+
 * TODO Хийх зүйлс
 нэмэлт заавар оруулах

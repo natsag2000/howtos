@@ -156,6 +156,7 @@ code:add_path("/home/nagi/myerl_libs/ibrowse-1.6.1/ebin").
     жишээ нь: cd $HOME/sources && tar xvfz otp_src_R1XXX.tar.gz
   - Тохируулах
     R1XXX ийн оронд татаж авсан хувилбарынхаа дугаарыг бичээрэй (R13B04 гэх мэт)
+    МАК машин дээр ssl /opt дотор суудаг тул ssl тэй суулгамаар бол --with-ssl=/opt/local гэж зааж өгнө.
     ./configure --prefix=$HOME/erlang/releases/R1XXXX
   - Хөрвүүлэх
     make

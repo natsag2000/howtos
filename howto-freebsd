@@ -1,0 +1,149 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Чөтгөр ЗФС
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* ZFS суулгац
+  - DVD нээс эхлүүлнэ
+  - Fixit -> CD/DVD сонгоно
+** өмнө нь дискэнд өөр юмс байсан бол эхлээд нь устгана
+   Fixit# gpart show ad4
+   Fixit# gpart delete -i 1 ad4
+   Fixit# gpart destroy ad4
+** шинэ зүсмэл үүсгэх
+   Fixit# gpart create -s GPT ad4
+** boot зүсмэл үүсгэнэ
+   Fixit# gpart add -b 34 -s 128 -t freebsd-boot ad4
+** үлдсэн хэсгийг нь ЗФС-д зориулна
+   Fixit# gpart show ad4
+   Fixit# gpart add -b 162 -s 976772973 -t freebsd-zfs ad4
+** Bootpartition дотор bootstrap код суулгана
+   Fixit# gpart show ad4
+   Fixit# gpart bootcode -b /mnt2/boot/pmbr -p /mnt2/boot/gptzfsboot -i 1 ad4
+** Шаардлагатай цөмийн модулуудыг дуудна
+   Fixit# kldload /mnt2/boot/kernel/opensolaris.ko
+   Fixit# kldload /mnt2/boot/kernel/zfs.ko
+** Сул ЗФС зүсмэл дээрээ rpool гэсэн pool үүсгэнэ. Тэндээс систем ачаалах болно.
+   Fixit# zpool create rpool /dev/ad4p2
+   Fixit# zpool set bootfs=rpool rpool
+** rpool дээрээ шаардлагатай файл системүүдийг суулгана.
+   Fixit# zfs create rpool/tmp
+   Fixit# zfs create rpool/usr
+   Fixit# zfs create rpool/var
+** rpool дээрээ swap зүсмэл үүсгэнэ
+   Fixit# zfs create -V 4gb rpool/swap
+   Fixit# zfs set org.freebsd:swap=on rpool/swap
+   Fixit# zfs set checksum=off rpool/swap
+** Одоо base буюу үндсэн систем болон цөм суулгана
+   Fixit# cd /dist/8.1-RELEASE/base
+   Fixit# export DESTDIR=/rpool
+   Fixit# ./install.sh
+   ....
+   Fixit# cd ../kernels
+   Fixit# ./install.sh generic
+   Fixit# cd /rpool/boot
+   Fixit# cp -Rp GENERIC/* kernel/
+** Одоо чөтгөрийн эх код, мөн МАН хуудаснуудыг суулгана
+   Fixit# cd /dist/8.1-RELEASE/src
+   Fixit# ./install.sh all
+   ...
+   Fixit# cd ../manpages
+   Fixit# ./install.sh
+** rc.conf болон loader.conf файлуудад дараах оруулгуудыг оруулснаар zfs файл систем эхэлж ачаалагдах боломжтой болно. Мөн src.conf файлд Bootloader ийг ZFS ийн дэмжлэгийг зааж өгөх хэрэгтэй
+   Fixit# echo 'zfs_enable="YES"' > /rpool/etc/rc.conf
+   Fixit# echo 'LOADER_ZFS_SUPPORT="YES"' > /rpool/etc/src.conf
+   Fixit# echo 'zfs_load="YES"' > /rpool/boot/loader.conf
+   Fixit# echo 'vfs.root.mountfrom="zfs:rpool"' >> /rpool/boot/loader.conf
+
+** Төгсгөлд нь ZFS Pool импортлох болон экспортлоход хэрэглэгддэг zpool.cache файл үүсгэх хэрэгтэй.
+   Fixit# mkdir /boot/zfs
+   Fixit# zpool export rpool && zpool import rpool
+   Fixit# cp /boot/zfs/zpool.cache /rpool/boot/zfs
+
+** Одоо шинээр суулгасан системдээ ZFS дэмжлэг суулгаж өгнө. Мөн хоосон fstab файл үүсгэж гарах сануулга алдаанаас сэрэмжилж болно.
+   Fixit# chroot /rpool
+   Fixit# mount -t devfs devfs /dev
+   Fixit# unset DESTDIR
+   Fixit# cd /usr/src/sys/boot/
+   Fixit# make obj
+   Fixit# make depend
+   Fixit# make
+   Fixit# cd i386/loader
+   Fixit# make install
+   Fixit# umount /dev
+   Fixit# touch /etc/fstab
+   Fixit# exit
+
+** Сүүлд нь ЗФС файл систем хаана таниулагдахыг зааж өгдөг. Ингэснээр динамик линк хийгдсэн програм зөв ажиллах болно. Эхлээд LD_LIBRARY_PATH хувьсагчийг суулгана.
+   Fixit# export LD_LIBRARY_PATH=/mnt2/lib
+   Fixit# zfs set mountpoint=legacy rpool
+   Fixit# zfs set mountpoint=/tmp rpool/tmp
+   Fixit# zfs set mountpoint=/var rpool/var
+   Fixit# zfs set mountpoint=/usr rpool/usr
+
+** Одоо шинээр ачаална. Ачаалсны дараа рүүт нууц үггүйгээр холбогдоно. Ингэсний дараа системийн тохиргоог /etc/rc.conf дотор хийх мөн хэрэглэгч шинээр үүсгэх гэх мэт тохиргоо хийж болно.
+   - sysinstall ийг ажиллуулж root нууц үг, хэрэглэгч нэмэх, сүлжээ, sshd тохируулна
+     # zfs create rpool/ports
+     # zfs set compression=gzip rpool/ports
+     # zfs get compression rpool/ports
+     # zfs set mountpoint=/usr/ports rpool/ports
+     # portsnap fetch extract
+     ..
+     # zfs create rpool/ports/distfiles
+     # zfs set compression=off rpool/ports/distfiles
+     # zfs set mountpoint=/usr/ports/distfiles rpool/ports/distfiles
+** Гэрийн санг тусад нь үүсгэх
+   # zfs create rpool/home
+   # zfs create rpool/home/nagi
+   ### zfs set quota=3G rpool/home/nagi  хэрэв хэмжээ заахаар бол
+   # zfs get all rpool/home/nagi  мэдээлэл харах
+
+   # zfs set mountpoint=/home rpool/home
+   # zfs set mountpoint=/home/nagi rpool/home/nagi
+
+
+* Заавал суулгах портууд
+  - ports-mgmt/portmanager
+  - ports-mgmt/fastest_sites
+  - sysutils/screen
+  - devel/git
+  - x11-wm/hs-xmonad
+  - x11-wm/hs-xmonad-contrib
+  - x11/trayer
+  - x11/dzen2
+  - x11/xmessage (xmonad-д хэрэгтэй)
+  - graphics/scrot
+  - x11/xorg (магадгүй pkg_add -r xorg гэж суулгаж болох юм, цаг хэмнэх)
+  ==================
+  - devel/subversion
+  - ftp/wget
+  - ftp/curl
+  - misc/figlet
+  - misc/figlet-fonts
+  - multimedia/mplayer
+  - multimedia/mplayer-fonts
+* Суулгах файлууд
+  - fastest_sites файл бэлдэнэ (howto-port оос харна уу)
+  - .tcshrc
+  - .xinitrc  # xmonad мөн xmodmap зэргийг эхлүүлсэн мөр бий 
+  - .xsession # trayer эхлүүлсэн мөр бий
+  - .xmonad/xmonad.hs файлыг бэлдэнэ/хуулна
+  - mn файлыг хуулах
+  - .font санд фонтууд суулгах (howto-fonts файлыг хар)
+    xos4-terminus
+* Xorg
+** nVidia
+   cd /x11/nvidia-drivers
+   /boot/loader.conf дотор дараах мөр орно
+   nvidia_load="YES"  (унтрааж асаасан нь дээр )
+   /etc/X11/xorg.conf дотор nv гэдгийг nvidia аар солино
+** Xorg
+  Xorg ийн 7.4 өөс эхлээд HAL хэрэглэгддэг учраас дараах хоёр мөрийг /etc/rc.conf дотор нэмж өгнө
+  hald_enable="YES"
+  dbus_enable="YES"
+  linux_enable="YES"
+** X11 тохиргоо
+   Xorg -configure тушаалаар xorg.conf.new файл үүссэн байна. Дараах мөрүүдийг зохих газар нь хий.
+   DefaultDepth 24
+   Modes "" ""

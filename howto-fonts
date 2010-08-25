@@ -6,7 +6,15 @@
 
 * Үсгийн маяг суулгах
 ** Чөтгөр дээр
-   
+   /etc/X11/xorg.conf дотор дараах оруулга нэмнэ (жишээ болгож dejavu үсгийн маяг авав )
+   - Module section дотор
+     Load  "freetype"
+   - Files section дотор
+     FontPath  "/usr/local/lib/X11/fonts/dejavu"
+*** түр зуур нэмэх (шинээр эхлэх үед алдагдана)
+    % xset fp+ /usr/local/lib/X11/fonts/dejavu
+    % xset fp rehash
+
 ** Үбүнтү машин дээр
 - ttf-mscorefonts-installer багц суулгах
 - ~/.fonts дотор шинээр суулгах үсгийн маягаа хуулах

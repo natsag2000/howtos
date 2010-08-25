@@ -104,25 +104,33 @@
 
 
 * Заавал суулгах портууд
+  - sysutils/screen
+  - sysutils/lsof
   - ports-mgmt/portmanager
   - ports-mgmt/fastest_sites
-  - sysutils/screen
   - devel/git
+  - devel/subversion
   - x11-wm/hs-xmonad
   - x11-wm/hs-xmonad-contrib
   - x11/trayer
   - x11/dzen2
+  - x11/dmenu
   - x11/xmessage (xmonad-д хэрэгтэй)
-  - graphics/scrot
   - x11/xorg (магадгүй pkg_add -r xorg гэж суулгаж болох юм, цаг хэмнэх)
-  ==================
-  - devel/subversion
+  - graphics/scrot
+  - graphics/ImageMagick
+  - www/firefox
+  - ftp/axel
   - ftp/wget
   - ftp/curl
   - misc/figlet
   - misc/figlet-fonts
+  - x11-fonts/dejavu
+  - x11-fonts/xlsfonts
+  ======================
   - multimedia/mplayer
   - multimedia/mplayer-fonts
+  - multimedia/audiopreview
 * Суулгах файлууд
   - fastest_sites файл бэлдэнэ (howto-port оос харна уу)
   - .tcshrc
@@ -147,3 +155,8 @@
    Xorg -configure тушаалаар xorg.conf.new файл үүссэн байна. Дараах мөрүүдийг зохих газар нь хий.
    DefaultDepth 24
    Modes "" ""
+* Сүлжээ
+  /etc/resolve.conf доторх оруулга
+  domain localdomain
+  nameserver 127.0.0.1
+  nameserver routeraddress

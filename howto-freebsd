@@ -160,3 +160,8 @@
   domain localdomain
   nameserver 127.0.0.1
   nameserver routeraddress
+* Зарим алдаанууд
+**  xauth: bad display name
+    /etc/hosts доторх оруулгыг засна (машины нэр болон домэйн хаягаа оруулна)
+    ::1 localhost localhost.localdomain nbsd.localdomain
+    127.0.0.1 localhost localhost.localdomain nbsd.localdomain

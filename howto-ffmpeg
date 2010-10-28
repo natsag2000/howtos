@@ -55,12 +55,19 @@ ffmpeg -r 5 -g 120 -s 1280x800 -f x11grab -i :0.0 -f oss -i /dev/dsp0.0
 -acodec libmp3lame -vcodec libx264 -cqp 1 screencast.avi
 
 * дүрс бичлэгийг зураг болгож хувиргах
-ffmpeg -i foo.avi -r 1 -s WxH -f image2 foo-%03d.jpeg
+  ffmpeg -i foo.avi -r 1 -s WxH -f image2 foo-%03d.jpeg
   WxH гэж зааж өгсөн хэлбэрт хувиргана
 
 * Дэлгэц дээрх цонхнуудын хэмжээ байршлын мэдээллийг авах
 
-xwininfo -frame   гээд цонхон дээр дарахаар уг цонхны мэдээллийг харуулна
+  xwininfo -frame   гээд цонхон дээр дарахаар уг цонхны мэдээллийг харуулна
+
+* Дүрс бичлэгээс тасдаж видео бэлдэх
+  ffmpeg -vcodec copy -acodec copy -i orginalfile -ss 00:01:30 -t 0:0:20 newfile
+
+* FLV файлаас дууг нь mp3 болгож хувиргах
+  ffmpeg -i input.flv -f mp3 -vn -acodec copy ouput.mp3
 
 * нэмэлт жишээг man ffmpeg зааврын төгсгөлд харна уу
+
 

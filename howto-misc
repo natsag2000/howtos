@@ -1,0 +1,41 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Зарим ангилагдаагүй тушаалууд
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* Файл системд буй хамгийн том хорин сан
+  du -xk | sort -n | tail -20
+
+* Зурагнуудаас олон хуудастай пдф үүсгэх
+  convert -adjoin -page A4 *.jpeg multipage.pdf
+
+* Өндөр зуралттай дүрс бичлэг файлыг удаан машин дээр тоглуулах
+  mplayer -framedrop -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all
+
+* Видео файлаас дууг нь тасдаж авах
+  mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile <output-file> <input-file>
+
+* Төмрийн дэлгэрэнгүй мэдээллийг вэб хуудас болгож харах
+  lshw -html > hardware.html
+
+* Вэб хуудаснаас бүх зургийг нь хуулах
+  wget -r -l1 --no-parent -nH -nd -P/tmp -A".gif,.jpg" http://example.com/images
+
+* Сүлжээний картанд кабел залгагдаад ажиллах байгааг шалгах
+  mii-tool eth0
+
+* Нээлттэй байгаа порт болон холболттой програмуудыг жагсаах
+  netstat -ntauple
+  эсвэл
+  netstat -lnp
+
+* Файл цоожилчихоод байгаа процесыг устгах
+  fuser -k filename
+
+* Програм юмуу процесыг pause/unpause буюу түр зогсоох ( жишээ нь галт үнэг ).
+  Зогсоосон үед zero CPU load болно
+  killall -STOP -m firefox
+
+* Гарнаас уншаагүй захиануудыг харах
+  curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | perl -ne 'print "\t" if /<name>/; print "$2\n" if /<(title|name)>(.*)<\/\1>/;'

@@ -1,0 +1,14 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: HOWTO-г хэрхэн хэрэглэх вэ
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* БАШ дээр
+
+curl http://github.com/natsag2000/howtos/raw/master/howto-$1
+
+* TCSH дээр
+
+alias howto 'curl http://github.com/natsag2000/howtos/raw/master/howto-\!*'
+alias ho 'curl http://github.com/natsag2000/howtos/raw/master/howto-\!*'

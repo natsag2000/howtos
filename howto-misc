@@ -5,7 +5,8 @@
 #+STARTUP: hidestars
 
 * Файл системд буй хамгийн том хорин сан
-  du -xk | sort -n | tail -20
+  du -xh | sort -n | tail -20 # КВ, MB, GB аар
+  du -xk | sort -n | tail -20 # зөвхөн KB аар
 
 * Зурагнуудаас олон хуудастай пдф үүсгэх
   convert -adjoin -page A4 *.jpeg multipage.pdf

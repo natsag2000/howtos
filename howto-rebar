@@ -1,0 +1,19 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: rebar ашиглалт
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* Татаж авах
+  Код бичих сандаа орж байгаад дараах тушаалаар татаж авна:
+
+  > wget http://hg.basho.com/rebar/downloads/rebar 
+  > chmod u+x rebar
+
+* Зарим тушаалын хэрэглээ
+  ./rebar -c     # хэрэглэх заавар
+  ./rebar create-app  [appid=myapp] # жишээ програм үүсгэнэ
+
+* Хэрэгтэй холбоос
+
+  http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html

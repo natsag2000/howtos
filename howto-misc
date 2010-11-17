@@ -40,3 +40,5 @@
 
 * Гарнаас уншаагүй захиануудыг харах
   curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | perl -ne 'print "\t" if /<name>/; print "$2\n" if /<(title|name)>(.*)<\/\1>/;'
+* ман файлыг пдф болгох
+  man -t MAN | ps2pdf - > man.pdf

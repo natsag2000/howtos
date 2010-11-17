@@ -47,3 +47,6 @@ ClientAliveInterval 60
 ServerAliveInterval 60
 гэж оруулж өгнө (ФАЙЛЫН НЭРИЙГ АНХААРНА УУ).
 
+** Хэрэв ssh холболт хийгдэхдээ удаад байвал
+   config файлдаа дараах оруулгыг нэмнэ:
+   UseDNS no

@@ -31,6 +31,9 @@
    # portsnap fetch update
    # portmanager -u -f -l -y
 
+** ХИЙХ ЗҮЙЛС
+   - package хэлбэрээр суулгах  pormanager ийн сонголт байдаг эсэхийг мэдэх
+
 * Том хэмжээтэй портыг суулгах
   - Хэмжээ нь том байх
   - Интернэт холболт удаан үед
@@ -52,3 +55,9 @@
    # echo ".include "/usr/local/etc/ports_sites.conf"" >> /etc/make.conf
 ** Хүсвэл cron ажил болгож болно
    0 6 * * * /usr/local/bin/fastest_sites > /usr/local/etc/ports_sites.conf
+
+* portaudit
+  - хорхой шавьжтай ноцтой портуудын мэдээлэл хадгалж байдаг. дараах тушаалаар шинэчлэнэ
+  # portaudit -Fda
+  алдаатай порт байвал суулгадаггүй. Хэрэв алдааг нь үл харгалзаж суулгахыг хүсвэл (жишээ wget):
+  # portupgrade -m DISABLE_VULNERABILITIES=yes wget-1.8.2.6

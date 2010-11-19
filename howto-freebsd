@@ -131,6 +131,7 @@
   - multimedia/mplayer
   - multimedia/mplayer-fonts
   - multimedia/audiopreview
+  - editors/openoffice.org-3
 * Суулгах файлууд
   - fastest_sites файл бэлдэнэ (howto-port оос харна уу)
   - .tcshrc
@@ -165,3 +166,7 @@
     /etc/hosts доторх оруулгыг засна (машины нэр болон домэйн хаягаа оруулна)
     ::1 localhost localhost.localdomain nbsd.localdomain
     127.0.0.1 localhost localhost.localdomain nbsd.localdomain
+** starting SSHD гэж эхлэх үед удах
+   холбогдож орсон хойноо рүүт эрхээр /etc/rc.d/sshd stop /etc/rc.d/ssh start гэж эхлүүлээд шинээр ачаална.
+** сүлжээний програмууд удаан ажиллах ( wget, curl, resolving... )
+   dns-ийн асуудал. Дээр бичсэн Сүлжээ хэсгийн /etc/resolve.conf оруулгыг шалга

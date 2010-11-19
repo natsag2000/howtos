@@ -84,5 +84,13 @@ http://ubuntuguide.org/wiki/Ubuntu:Karmic
 * ФЛЭШ суулгах
 sudo aptitude install ubuntu-restricted-extras  # дараа нь галт үнэгээ шинээр ачаалаад болно
 
+* Програмын хувилбаруудыг өөрчлөх
+  жишээ болгож жаавагийн хувилбар нэмье (root эрхээр):
+  > update-alternatives --install "/usr/bin/java" "java" "/usr/java/default/bin/java" 3
+  > update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/default/bin/javac" 3
+  > update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/java/default/bin/javaws" 3
+  одоо нэмсэн хувилбаруудаас сэлгэхийн тулд:
+  > update-alternatives --config java
+
 * TODO Хийгдэх зүйлс
 Цэглэх

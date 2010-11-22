@@ -42,3 +42,24 @@
   curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | perl -ne 'print "\t" if /<name>/; print "$2\n" if /<(title|name)>(.*)<\/\1>/;'
 * ман файлыг пдф болгох
   man -t MAN | ps2pdf - > man.pdf
+
+* pdf файлд хайлт хийх
+  poppler-utils пакетыг суулгавал pdftotext, pdftohtml зэрэг багаж суугддаг.
+  pdftotext FILE.pdf - | ack "search term"
+
+  bin сан дотроо дараах жижиг скриптийг нэмж болно
+
+#!/bin/tcsh
+#
+# search in a pdf file
+
+if ( $# == 0 ) then
+    echo "No search term"
+    exit 1
+endif
+
+set CURDIR=`pwd`
+foreach i (`find $CURDIR -type f -name "*.pdf"`)
+    echo $i
+    pdftotext $i - | ack $1
+end

@@ -4,6 +4,14 @@
 #+STARTUP: indent
 #+STARTUP: hidestars
 
+* Суулгах
+  Үбүнтү 10.04 дээр
+
+  sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian lucid non-free"
+  wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+
+  sudo apt-get update && sudo apt-get install virtualbox-3.2
+
 * Guest Additions суулгах
 Devices->Install Guest Additions гэж цэсийг VirtualBox дээр сонгосноор хэрэглэгч үйлдлийн систем дээр СД хийсэн хэмээн танигддаг. Хэрэглэгчийн үйлдлийн систем дээр
 sudo /media/cdrom/VBoxLinuxAdditions.run

@@ -1,0 +1,11 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Qt4 ийн тухай
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* Алим дээр суулгах
+  python configure.py -d /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages -b /usr/local/bin --use-arch=i386
+
+  i386 хувилбараар эхлүүлэх
+  > arch -i386 python /path/to/launchLeo.py

@@ -1,0 +1,11 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Галт үнэгийн тохиргоо
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* about:config дотор хийх тохируулга
+  network.dns.disableIPv6  true
+  network.http.pipelining  true
+  network.http.pipelining.maxrequests 10
+  network.http.proxy.pipelining  true

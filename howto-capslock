@@ -6,7 +6,14 @@
 
 * Юникс машин дээр
 
-.xmodmap файлд юмуу эсвэл /etc/X11/Xmodmap дотор.
+** console дээр
+   loadkeys emacs
+
+   буцааж анхны горимд
+   loadkeys -d
+
+** .xmodmap юмуу /etc/X11/Xmodmap файлд
+
 #+begin_src
 clear lock
 add control = Caps_Lock

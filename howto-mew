@@ -1,0 +1,13 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: Эмакс дээр mew захиа уншигчийг зөв хэрэглэх нь
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* захианы хаягийн бүртгэл дээр гарсан өөрчлөлтийг идэвхижүүлэх
+ mew-status-update  - Z
+* label юмуу ангилах зориулалттай санд гарсан өөрчлөлтийг идэвхижшүүлэх
+ C-u Z
+
+
+

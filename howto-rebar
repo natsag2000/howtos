@@ -7,7 +7,8 @@
 * Татаж авах
   Код бичих сандаа орж байгаад дараах тушаалаар татаж авна:
 
-  > wget http://hg.basho.com/rebar/downloads/rebar 
+  > wget http://hg.basho.com/rebar/downloads/rebar
+  > curl -L -O http://hg.basho.com/rebar/downloads/rebar
   > chmod u+x rebar
 
 * Зарим тушаалын хэрэглээ

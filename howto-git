@@ -107,3 +107,15 @@ Host github.com
 #+begin_src
   git clean -Х -f -d <path>
 #+end_src
+* Дотоод судал бүтээх
+  mkdir example.git
+  cd example.git
+  git init --bare
+
+  cd /tmp
+  git clone path/to/example.git myexample
+  cd myexample
+  // create file
+  git add .
+  git commit -a -m "initial import"
+  git push origin master

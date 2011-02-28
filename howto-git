@@ -119,3 +119,16 @@ Host github.com
   git add .
   git commit -a -m "initial import"
   git push origin master
+
+* Алгасах файлын жагсаалт үүсгэх
+  git config --help ийг нэг уншихад гэмгүй
+  Дараах тушаалаар ~/.gitignore файлд дотор оруулсан файлын нэрсүүдийг git автоматаар алгасах болно (эсвэл гараар ~/.gitconfig файлд нэмж болно):
+  git config --global core.excludesfile ~/.gitignore
+
+
+
+  жишээ нь дараах оруулгууд ~/.gitignore файлд байж болно:
+  *.iws
+  *.ipr
+  .idea
+  .gradle

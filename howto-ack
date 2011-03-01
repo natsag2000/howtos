@@ -6,3 +6,9 @@
 
 * Суулгах
   curl http://betterthangrep.com/ack-standalone > ~/bin/ack && chmod 0755 !#:3
+* Тохиргоо ~/.ackrc
+  үргэлж өнгөөр харуулах
+  --color
+  зарим сангуудыг үл тооцох
+  --ignore-dir=.idea
+  --ignore-dir=.gradle г.м

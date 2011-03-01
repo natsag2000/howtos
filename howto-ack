@@ -1,0 +1,8 @@
+#-*- mode: org; mode:visual-line; mode:org-indent -*-
+#+TITLE: ACK жаавар :)
+#+AUTHOR: nagi
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* Суулгах
+  curl http://betterthangrep.com/ack-standalone > ~/bin/ack && chmod 0755 !#:3

@@ -132,3 +132,13 @@ Host github.com
   *.ipr
   .idea
   .gradle
+
+* Судал үүсгэж сүүлд нь нийлүүлэх
+  git checkout -b fix_that
+  -- do some hack
+  git commit -am "fixed that"
+  git push ???
+
+  git checkout master
+  git rebase master fix_that
+

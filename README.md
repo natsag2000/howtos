@@ -1,17 +1,25 @@
 БИЧИЛ ЗААВАРЧИЛГААНУУД
 ======================
 
-Бүрхүүл дотроо дараах зааврыг нэмнэ (tcsh)
+Бүрхүүл дотроо дараах зааврыг нэмнэ
 
-alias howto 'curl https://github.com/natsag2000/howtos/raw/master/howto-\!*'
-alias ho 'curl https://github.com/natsag2000/howtos/raw/master/howto-\!*'
+*zsh*
 
-ингээд бүрхүүлээсээ дараах маягаар дуудаж үзнэ
+> ho () { curl https://raw.github.com/natsag2000/howtos/master/howto-$* }
+> howto () { curl https://raw.github.com/natsag2000/howtos/master/howto-$* }
 
-howto list
-howto gpg
-ho openssl
-ho tunnel
+*tcsh*
+
+> alias howto 'curl https://raw.github.com/natsag2000/howtos/master/howto-\!*'
+> alias ho 'curl https://raw.github.com/natsag2000/howtos/master/howto-\!*'
+
+
+ингээд бүрхүүлээс дараах маягаар дуудаж хэрэглэнэ
+
+> howto list
+> howto gpg
+> ho openssl
+> ho tunnel
 
 гэх мэт.
 

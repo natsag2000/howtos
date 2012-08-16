@@ -5,10 +5,11 @@
 
 ХЭРЭГЛЭХ ЗААВАР
 ---------------
+
 Бүрхүүл дотроо дараах зааврыг нэмнэ (tcsh)
 
-alias howto 'curl http://github.com/natsag2000/howtos/raw/master/howto-\!*'
-alias ho 'curl http://github.com/natsag2000/howtos/raw/master/howto-\!*'
+alias howto 'curl https://github.com/natsag2000/howtos/raw/master/howto-\!*'
+alias ho 'curl https://github.com/natsag2000/howtos/raw/master/howto-\!*'
 
 ингээд бүрхүүлээсээ дараах маягаар дуудаж үзнэ
 
